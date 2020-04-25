@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16sp"
+    android:gravity="center"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:textSize="18sp"
+        android:text="Enter ESP32 Chip IP Address"
+        android:padding="@dimen/space_normal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_border"
+        android:padding="@dimen/space_normal"
+        android:layout_margin="@dimen/space_normal"
+        android:hint="IP  Address"
+        app:boxBackgroundColor="#20D81B60">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etIP"
+            android:digits="1234567890."
+            android:inputType="number"
+            android:background="@color/transparent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnSave"
+        android:text="SAVE"
+        android:textColor="@color/white"
+        android:background="@drawable/button_primary"
+        android:padding="@dimen/space_normal"
+        android:layout_margin="@dimen/space_normal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
