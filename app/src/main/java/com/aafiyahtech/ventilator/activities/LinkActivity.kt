@@ -1,9 +1,11 @@
-package com.aafiyahtech.ventilator
+package com.aafiyahtech.ventilator.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.aafiyahtech.ventilator.utils.AppDataProvider
+import com.aafiyahtech.ventilator.R
 import kotlinx.android.synthetic.main.activity_link.*
 
 class LinkActivity : AppCompatActivity() {

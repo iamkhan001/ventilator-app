@@ -1,8 +1,10 @@
-package com.aafiyahtech.ventilator
+package com.aafiyahtech.ventilator.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.aafiyahtech.ventilator.utils.AppDataProvider
+import com.aafiyahtech.ventilator.R
 
 class SplashActivity : AppCompatActivity() {
 

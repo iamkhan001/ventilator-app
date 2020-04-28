@@ -1,4 +1,4 @@
-package com.aafiyahtech.ventilator
+package com.aafiyahtech.ventilator.utils
 
 import android.content.Context
 
@@ -13,7 +13,8 @@ class AppDataProvider (context: Context) {
         fun getInstance(context: Context): AppDataProvider {
 
             if (appDataProvider == null) {
-                appDataProvider = AppDataProvider(context)
+                appDataProvider =
+                    AppDataProvider(context)
             }
 
             return appDataProvider!!

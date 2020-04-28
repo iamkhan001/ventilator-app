@@ -15,4 +15,6 @@
 
     <color name="icon">#888</color>
     <color name="white_2">#aaa</color>
+    <color name="green_dark">#080</color>
+    <color name="green">#0a0</color>
 </resources>

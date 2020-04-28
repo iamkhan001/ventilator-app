@@ -1,78 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16sp"
-    tools:context=".MainActivity">
-
-    <TextView
-        android:id="@+id/tvIp"
-        android:textSize="18sp"
-        android:padding="@dimen/space_normal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:id="@+id/tvChange"
-        android:textColor="@color/colorAccent"
-        android:text="Click Here to change IP Address"
-        android:textSize="18sp"
-        android:padding="@dimen/space_normal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_border"
-        android:padding="@dimen/space_normal"
-        android:layout_margin="@dimen/space_normal"
-        android:hint="Request"
-        app:boxBackgroundColor="#20D81B60">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etAPI"
-            android:inputType="textUri"
-            android:background="@color/transparent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-    </com.google.android.material.textfield.TextInputLayout>
+    tools:context=".activities.MainActivity">
 
 
-    <Button
-        android:id="@+id/btnSend"
-        android:text="SEND"
-        android:textColor="@color/white"
-        android:background="@drawable/button_primary"
-        android:padding="@dimen/space_normal"
-        android:layout_margin="@dimen/space_normal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+    <fragment
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/main_path" />
 
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-
-        <ProgressBar
-            android:id="@+id/progressBar"
-            android:visibility="gone"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <TextView
-            android:id="@+id/tvResponse"
-            android:textSize="18sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-    </FrameLayout>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
