@@ -25,6 +25,7 @@ class StatusAdapter(private val list: ArrayList<VentilatorStatus>): RecyclerView
 
         holder.tvName.text = item.name
         holder.tvValue.text = item.value
+        holder.tvUnit.text = item.unit
 
     }
 
@@ -32,6 +33,7 @@ class StatusAdapter(private val list: ArrayList<VentilatorStatus>): RecyclerView
     class MyViewHolder(view: View): RecyclerView.ViewHolder(view) {
         val tvName: TextView = view.findViewById(R.id.tvName)
         val tvValue: TextView = view.findViewById(R.id.tvValue)
+        val tvUnit: TextView = view.findViewById(R.id.tvUnit)
     }
 
 }

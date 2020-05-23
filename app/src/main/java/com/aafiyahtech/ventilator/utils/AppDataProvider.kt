@@ -1,6 +1,7 @@
 package com.aafiyahtech.ventilator.utils
 
 import android.content.Context
+import com.aafiyahtech.ventilator.ui.fragments.SettingsFragment
 
 class AppDataProvider (context: Context) {
 
@@ -32,5 +33,30 @@ class AppDataProvider (context: Context) {
     }
 
     fun getIp(): String = preferences.getString("ip","")!!
+
+    fun getDataFetch(): Int = preferences.getInt("data_fetch",SettingsFragment.minDataFetchInterval)
+
+    fun getGraphUpdate(): Int = preferences.getInt("graph_update",SettingsFragment.minGraphUpdateInterval)
+
+    fun getGraphEntries(): Int = preferences.getInt("graph_entries",SettingsFragment.minGraphEntries)
+
+
+    fun setDataFetch(value: Int) {
+        val editor = preferences.edit()
+        editor.putInt("data_fetch", value)
+        editor.apply()
+    }
+
+    fun setGraphUpdate(value: Int) {
+        val editor = preferences.edit()
+        editor.putInt("graph_update", value)
+        editor.apply()
+    }
+
+    fun setGraphEntries(value: Int) {
+        val editor = preferences.edit()
+        editor.putInt("graph_entries", value)
+        editor.apply()
+    }
 
 }

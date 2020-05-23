@@ -12,7 +12,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import com.aafiyahtech.ventilator.R
 import com.aafiyahtech.ventilator.ui.activities.GraphActivity
-import com.aafiyahtech.ventilator.ui.activities.HomeActivity
 import com.aafiyahtech.ventilator.ui.viewModels.MainViewModel
 import com.aafiyahtech.ventilator.utils.ApiCaller
 import kotlinx.android.synthetic.main.fragment_main.*
@@ -40,8 +39,9 @@ class HomeFragment : Fragment() {
 
         tvIp.text = ip
 
-        imgMenu.setOnClickListener {
-            (context as HomeActivity).toggleMenu()
+        imgSettings.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToSettingsFragment()
+            view.findNavController().navigate(action)
         }
 
         btnGrp1a.setOnClickListener {
@@ -64,19 +64,23 @@ class HomeFragment : Fragment() {
         }
 
         btn3a.setOnClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToGroup3AFragment()
+            val action = HomeFragmentDirections.actionHomeFragmentToGroupListFragment(ApiCaller.GET_GROUP_3_A)
             view.findNavController().navigate(action)
         }
         btn3b.setOnClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToGroup3BFragment()
+            val action = HomeFragmentDirections.actionHomeFragmentToGroupListFragment(ApiCaller.GET_GROUP_3_B)
+            view.findNavController().navigate(action)
+        }
+        btn3c.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToGroup3CFragment()
             view.findNavController().navigate(action)
         }
         btn4a.setOnClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToGroupListFragment(ApiCaller.GET_GROUP_2_B)
+            val action = HomeFragmentDirections.actionHomeFragmentToGroupListFragment(ApiCaller.GET_GROUP_4_A)
             view.findNavController().navigate(action)
         }
         btn5b.setOnClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToGroup5BFragment()
+            val action = HomeFragmentDirections.actionHomeFragmentToGroupListFragment(ApiCaller.GET_GROUP_5_B)
             view.findNavController().navigate(action)
         }
         btn6a.setOnClickListener {

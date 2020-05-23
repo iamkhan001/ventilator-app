@@ -4,28 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_path"
     app:startDestination="@id/homeFragment">
-
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.aafiyahtech.ventilator.ui.fragments.HomeFragment"
-        android:label="fragment_home"
+        android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_homeFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
         <action
             android:id="@+id/action_homeFragment_to_groupListFragment"
             app:destination="@id/groupListFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_group_3_A_Fragment"
-            app:destination="@id/group_3_A_Fragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_group_3_B_Fragment"
-            app:destination="@id/group_3_B_Fragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_group_5_B_Fragment"
-            app:destination="@id/group_5_B_Fragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
+            android:id="@+id/action_homeFragment_to_group_3_C_Fragment"
+            app:destination="@id/group_3_C_Fragment" />
     </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.aafiyahtech.ventilator.ui.fragments.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
     <fragment
         android:id="@+id/groupListFragment"
         android:name="com.aafiyahtech.ventilator.ui.fragments.GroupListFragment"
@@ -35,18 +33,27 @@
             android:id="@+id/action_groupListFragment_to_group_1_A_Fragment"
             app:destination="@id/group_1_A_Fragment" />
         <action
-            android:id="@+id/action_groupListFragment_to_group_2_B_Fragment"
-            app:destination="@id/group_2_B_Fragment" />
-        <action
             android:id="@+id/action_groupListFragment_to_group_1_B_Fragment"
             app:destination="@id/group_1_B_Fragment" />
         <action
             android:id="@+id/action_groupListFragment_to_group_2_A_Fragment"
             app:destination="@id/group_2_A_Fragment" />
+        <action
+            android:id="@+id/action_groupListFragment_to_group_2_B_Fragment"
+            app:destination="@id/group_2_B_Fragment" />
+        <action
+            android:id="@+id/action_groupListFragment_to_group_3_A_Fragment"
+            app:destination="@id/group_3_A_Fragment" />
+        <action
+            android:id="@+id/action_groupListFragment_to_group_3_B_Fragment"
+            app:destination="@id/group_3_B_Fragment" />
+        <action
+            android:id="@+id/action_groupListFragment_to_group_5_B_Fragment"
+            app:destination="@id/group_5_B_Fragment" />
         <argument
             android:name="type"
             app:argType="string"
-            android:defaultValue="Group_1_A" />
+            android:defaultValue="get_group_1_a" />
     </fragment>
     <fragment
         android:id="@+id/group_1_A_Fragment"
@@ -84,8 +91,8 @@
         android:label="fragment_5_b"
         tools:layout="@layout/fragment_5_b" />
     <fragment
-        android:id="@+id/settingsFragment"
-        android:name="com.aafiyahtech.ventilator.ui.fragments.SettingsFragment"
-        android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" />
+        android:id="@+id/group_3_C_Fragment"
+        android:name="com.aafiyahtech.ventilator.ui.fragments.Group_3_C_Fragment"
+        android:label="fragment_3_c"
+        tools:layout="@layout/fragment_3_c" />
 </navigation>

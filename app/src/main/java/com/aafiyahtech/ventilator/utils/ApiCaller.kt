@@ -1,5 +1,6 @@
 package com.aafiyahtech.ventilator.utils
 
+import android.os.Handler
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.aafiyahtech.ventilator.config.ApiClient
@@ -12,8 +13,9 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ApiCaller (private val type: String, apiUrl: String): Thread() {
+class ApiCaller (private val type: String, apiUrl: String): Runnable {
 
+    private val handler = Handler()
     companion object {
         private const val TAG = "ApiCaller"
         const val GET_GROUP_1_A = "get_group_1_a"
@@ -38,12 +40,12 @@ class ApiCaller (private val type: String, apiUrl: String): Thread() {
         const val SET_GROUP_5_B = "set_group_5_b"
         const val SET_GROUP_6_A = "set_group_6_a"
 
-        const val DELAY = 1000L
     }
 
     private var call: Call<ResponseBody>? = null
 
     var isRecursive = false
+    var delay = 1000L
 
     private val apiClient = ApiClient.getRetrofitInstance(apiUrl).create(ApiInterface::class.java)
     
@@ -53,13 +55,15 @@ class ApiCaller (private val type: String, apiUrl: String): Thread() {
     var mGroup2b: MutableLiveData<Group_2_B>? = null
     var mGroup3a: MutableLiveData<Group_3_A>? = null
     var mGroup3b: MutableLiveData<Group_3_B>? = null
+    var mGroup3c: MutableLiveData<Group_3_C>? = null
     var mGroup4a: MutableLiveData<Group_4_A>? = null
     var mGroup5b: MutableLiveData<Group_5_B>? = null
     var mGroup6a: MutableLiveData<Group_6_A>? = null
     var onApiResponseListener: OnApiResponseListener? = null
 
     override fun run() {
-        super.run()
+
+        Log.e(TAG, "type: $type")
         when(type) {
             GET_GROUP_1_A -> {
                 loadDataGroup1a()
@@ -78,6 +82,9 @@ class ApiCaller (private val type: String, apiUrl: String): Thread() {
             }
             GET_GROUP_3_B ->{
                 loadDataGroup3b()
+            }
+            GET_GROUP_3_C ->{
+                loadDataGroup3c()
             }
             GET_GROUP_4_A ->{
                 loadDataGroup4a()
@@ -110,6 +117,10 @@ class ApiCaller (private val type: String, apiUrl: String): Thread() {
                                 val group1A: Group_1_A? = Gson().fromJson(r.getJSONObject("data").toString(), Group_1_A::class.java)
                                 if (group1A != null) {
                                     mGroup1a?.postValue(group1A)
+                                    if (isRecursive){
+                                        startDelayed()
+                                        return
+                                    }
                                 }
                                 return
                             }
@@ -167,6 +178,10 @@ class ApiCaller (private val type: String, apiUrl: String): Thread() {
                                 val group1B: Group_1_B? = Gson().fromJson(r.getJSONObject("data").toString(), Group_1_B::class.java)
                                 if (group1B != null) {
                                     mGroup1b?.postValue(group1B)
+                                    if (isRecursive){
+                                        startDelayed()
+                                        return
+                                    }
                                 }
                                 return
                             }
@@ -225,6 +240,10 @@ class ApiCaller (private val type: String, apiUrl: String): Thread() {
                                 val group2a: Group_2_A? = Gson().fromJson(r.getJSONObject("data").toString(), Group_2_A::class.java)
                                 if (group2a != null) {
                                     mGroup2a?.postValue(group2a)
+                                    if (isRecursive){
+                                        startDelayed()
+                                        return
+                                    }
                                 }
                                 return
                             }
@@ -281,6 +300,10 @@ class ApiCaller (private val type: String, apiUrl: String): Thread() {
                                 val group2B: Group_2_B? = Gson().fromJson(r.getJSONObject("data").toString(), Group_2_B::class.java)
                                 if (group2B != null) {
                                     mGroup2b?.postValue(group2B)
+                                    if (isRecursive){
+                                        startDelayed()
+                                        return
+                                    }
                                     return
                                 }
                             }
@@ -338,6 +361,10 @@ class ApiCaller (private val type: String, apiUrl: String): Thread() {
                                 val group: Group_3_A? = Gson().fromJson(r.getJSONObject("data").toString(), Group_3_A::class.java)
                                 if (group != null) {
                                     mGroup3a?.postValue(group)
+                                    if (isRecursive){
+                                        startDelayed()
+                                        return
+                                    }
                                     return
                                 }
                             }
@@ -395,6 +422,67 @@ class ApiCaller (private val type: String, apiUrl: String): Thread() {
                                 val group: Group_3_B? = Gson().fromJson(r.getJSONObject("data").toString(), Group_3_B::class.java)
                                 if (group != null) {
                                     mGroup3b?.postValue(group)
+                                    if (isRecursive){
+                                        startDelayed()
+                                        return
+                                    }
+                                    return
+                                }
+                            }
+                            val msg = if (r.has("message")) {
+                                r.getString("message")
+                            }else {
+                                "Error Occurred!"
+                            }
+                            onApiResponseListener?.onError(msg)
+                            return
+                        }catch (e: Exception) {
+                            e.printStackTrace()
+                        }
+                    }
+                    val msg = try {
+                        val r = JSONObject(response.errorBody()!!.string())
+                        if (r.has("message")) {
+                            r.getString("message")
+                        }else {
+                            "Error Occurred!"
+                        }
+                    }catch (e: Exception) {
+                        e.printStackTrace()
+                        "Error Occurred!"
+                    }
+                    onApiResponseListener?.onError(msg)
+                }
+
+                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                    Log.e(TAG, "Failed: " + t.message)
+                    onApiResponseListener?.onError("Cannot connect to ventilator. Please check IP Address")
+
+                }
+
+            }
+        )
+    }
+
+    private fun loadDataGroup3c() {
+
+        call = apiClient.getGroup1A(GET_GROUP_3_C)
+        call?.enqueue(
+            object : Callback<ResponseBody> {
+
+                override fun onResponse(
+                    call: Call<ResponseBody>,
+                    response: Response<ResponseBody>
+                ) {
+                    Log.e(TAG, "success: " + response.code() + "\nbody: " + response.body() + "\nerror: body " + response.errorBody())
+
+                    if (response.body() != null){
+                        try {
+                            val r = JSONObject(response.body()!!.string())
+                            if (r.getBoolean("success")) {
+                                val group: Group_3_C? = Gson().fromJson(r.getJSONObject("data").toString(), Group_3_C::class.java)
+                                if (group != null) {
+                                    mGroup3c?.postValue(group)
                                     return
                                 }
                             }
@@ -452,6 +540,10 @@ class ApiCaller (private val type: String, apiUrl: String): Thread() {
                                 val group: Group_4_A? = Gson().fromJson(r.getJSONObject("data").toString(), Group_4_A::class.java)
                                 if (group != null) {
                                     mGroup4a?.postValue(group)
+                                    if (isRecursive){
+                                        startDelayed()
+                                        return
+                                    }
                                     return
                                 }
                             }
@@ -509,6 +601,12 @@ class ApiCaller (private val type: String, apiUrl: String): Thread() {
                                 val group: Group_5_B? = Gson().fromJson(r.getJSONObject("data").toString(), Group_5_B::class.java)
                                 if (group != null) {
                                     mGroup5b?.postValue(group)
+
+                                    if (isRecursive){
+                                        startDelayed()
+                                        return
+                                    }
+
                                     return
                                 }
                             }
@@ -568,8 +666,7 @@ class ApiCaller (private val type: String, apiUrl: String): Thread() {
                                     mGroup6a?.postValue(group)
 
                                     if (isRecursive){
-                                        sleep(DELAY)
-                                        loadDataGroup6a()
+                                        startDelayed()
                                         return
                                     }
 
@@ -666,6 +763,13 @@ class ApiCaller (private val type: String, apiUrl: String): Thread() {
     }
 
 
+    fun start(){
+        handler.post(this)
+    }
+
+    fun startDelayed(){
+        handler.postDelayed(this, delay)
+    }
 
     fun stopExecution(){
         isRecursive = false

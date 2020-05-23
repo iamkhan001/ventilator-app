@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:focusable="true"
+    android:clickable="true"
+    android:orientation="vertical"
+    tools:context=".ui.fragments.Group_3_C_Fragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/imgBack"
+                    android:tint="@color/white"
+                    android:src="@drawable/ic_arrow"
+                    android:layout_width="@dimen/img_back"
+                    android:layout_height="@dimen/img_back"/>
+
+
+                <TextView
+                    android:textSize="@dimen/text_large"
+                    android:text="Ventilator Configuration"
+                    android:textColor="@color/white"
+                    android:padding="@dimen/space_normal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+
+            </LinearLayout>
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        android:orientation="vertical">
+
+        <Switch
+            android:id="@+id/btnCycleStart"
+            android:layout_margin="@dimen/space_normal"
+            android:text="Cycle Start"
+            android:textSize="@dimen/text_normal"
+            android:padding="@dimen/space_normal"
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <Switch
+            android:id="@+id/btnHoming"
+            android:layout_margin="@dimen/space_normal"
+            android:text="Homing"
+            android:textSize="@dimen/text_normal"
+            android:padding="@dimen/space_normal"
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <Switch
+            android:id="@+id/btnDummy1"
+            android:layout_margin="@dimen/space_normal"
+            android:text="Dummy 1"
+            android:textSize="@dimen/text_normal"
+            android:padding="@dimen/space_normal"
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <Switch
+            android:id="@+id/btnDummy2"
+            android:layout_margin="@dimen/space_normal"
+            android:text="Dummy 2"
+            android:textSize="@dimen/text_normal"
+            android:padding="@dimen/space_normal"
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <Switch
+            android:id="@+id/btnDummy3"
+            android:layout_margin="@dimen/space_normal"
+            android:text="Dummy 3"
+            android:textSize="@dimen/text_normal"
+            android:padding="@dimen/space_normal"
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <Switch
+            android:id="@+id/btnBuzzerOff"
+            android:layout_margin="@dimen/space_normal"
+            android:text="Buzzer Off"
+            android:textSize="@dimen/text_normal"
+            android:padding="@dimen/space_normal"
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

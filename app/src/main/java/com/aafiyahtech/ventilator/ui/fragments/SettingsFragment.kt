@@ -1,5 +1,6 @@
 package com.aafiyahtech.ventilator.ui.fragments
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -19,6 +20,11 @@ class SettingsFragment : Fragment(){
         const val minDataFetchInterval = 1
         const val minGraphUpdateInterval = 1
         const val minGraphEntries = 10
+
+        const val maxDataFetchInterval = 15 - minDataFetchInterval
+        const val maxGraphUpdateInterval = 15 - minGraphUpdateInterval
+        const val maxGraphEntries = 30 - minGraphEntries
+
         const val TAG = "Settings"
     }
 
@@ -32,25 +38,43 @@ class SettingsFragment : Fragment(){
         return inflater.inflate(R.layout.fragment_settings, container, false)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        sbDataFetchInterval.max = 15
-        sbGraphEntries.max = 15
-        sbGraphInterval.max = 30
-
         appDataProvider = AppDataProvider.getInstance(requireContext())
+
+
+        sbDataFetchInterval.max = maxDataFetchInterval
+        sbGraphInterval.max = maxGraphUpdateInterval
+        sbGraphEntries.max = maxGraphEntries
+
+
+
+        val dataFetch = appDataProvider.getDataFetch() - minDataFetchInterval
+        val graphUpdate = appDataProvider.getGraphUpdate() - minGraphUpdateInterval
+        val graphEntries = appDataProvider.getGraphEntries() - minGraphEntries
+
+        sbDataFetchInterval.progress = dataFetch
+        sbGraphInterval.progress = graphUpdate
+        sbGraphEntries.progress = graphEntries
 
         val ip = appDataProvider.getIp()
         tvIp.text = ip
+
+
+        tvDataFetchInterval.text = "${appDataProvider.getDataFetch()} Seconds"
+        tvGraphUpdateInterval.text = "${appDataProvider.getGraphUpdate()} Seconds"
+        tvGraphEntries.text = "${appDataProvider.getGraphEntries()}"
 
 
         imgBack.setOnClickListener { activity?.onBackPressed() }
 
         sbDataFetchInterval.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
 
+            @SuppressLint("SetTextI18n")
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                Log.e(TAG, "Data Fetch: $progress")
+                    tvDataFetchInterval.text = "${progress + minDataFetchInterval} Seconds"
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
@@ -60,6 +84,10 @@ class SettingsFragment : Fragment(){
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
 
+                Log.d(TAG, "Data Fetch: "+seekBar?.progress)
+                if (seekBar != null){
+                    appDataProvider.setDataFetch(seekBar.progress + minDataFetchInterval)
+                }
 
             }
 
@@ -68,7 +96,7 @@ class SettingsFragment : Fragment(){
         sbGraphInterval.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
 
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                Log.e(TAG, "Graph Update: $progress")
+                tvGraphUpdateInterval.text = "${progress+ minGraphUpdateInterval} Seconds"
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
@@ -78,7 +106,10 @@ class SettingsFragment : Fragment(){
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
 
-
+                Log.d(TAG, "Graph Update: "+seekBar?.progress)
+                if (seekBar != null){
+                    appDataProvider.setGraphUpdate(seekBar.progress + minGraphUpdateInterval)
+                }
             }
 
         })
@@ -86,7 +117,7 @@ class SettingsFragment : Fragment(){
         sbGraphEntries.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
 
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                Log.e(TAG, "Graph Entries: $progress")
+                tvGraphEntries.text = "${progress+ minGraphEntries}"
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
@@ -95,8 +126,10 @@ class SettingsFragment : Fragment(){
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
-
-
+                Log.e(TAG, "Graph Entries: ${seekBar?.progress}")
+                if (seekBar != null){
+                    appDataProvider.setGraphEntries(seekBar.progress + minGraphEntries)
+                }
             }
 
         })

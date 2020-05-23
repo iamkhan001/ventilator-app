@@ -15,6 +15,7 @@ class MainViewModel: ViewModel() {
     var mGroup2B =  MutableLiveData<Group_2_B>()
     var mGroup3A =  MutableLiveData<Group_3_A>()
     var mGroup3B =  MutableLiveData<Group_3_B>()
+    var mGroup3C =  MutableLiveData<Group_3_C>()
     var mGroup4A =  MutableLiveData<Group_4_A>()
     var mGroup5B =  MutableLiveData<Group_5_B>()
     var mGroup6A =  MutableLiveData<Group_6_A>()

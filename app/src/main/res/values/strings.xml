@@ -84,7 +84,7 @@
     <string name="unit_oxygen_rate">%</string>
 
     <!--  group 1 b -->
-    <string name="unit_vent_mode">na</string>
+    <string name="unit_vent_mode"> </string>
     <string name="unit_trigger_flow">lpm</string>
     <string name="unit_trigger_pressure">cm of H2O</string>
     <string name="unit_trigger_time">msec</string>
@@ -106,7 +106,7 @@
     <string name="unit_max_oxygen">%</string>
 
     <!-- group 2 b -->
-    <string name="unit_termination_type">na</string>
+    <string name="unit_termination_type"> </string>
     <string name="unit_expiratory_end_delay">sec</string>
     <string name="unit_minute_ventilation">lpm</string>
     <string name="dialog_default_title">Loading...</string>
@@ -118,12 +118,22 @@
     <string name="graph_polling_rate">Graph Polling rate</string>
     <string name="graph_type">Graph Type</string>
 
+    <string name="unit_graph_type"> </string>
+    <string name="unit_graph_polling_rate">sec</string>
+    <string name="unit_app_polling_rate">sec</string>
+
     <!-- GROUP 3 B -->
     <string name="plate_pressure">Plate Pressure</string>
     <string name="acceleration">Acceleration</string>
     <string name="inspiratory_on_delay">Inspiratory ON Delay</string>
     <string name="t_pause">T-Pause</string>
     <string name="dummy1">Dummy 1</string>
+
+    <string name="unit_plate_pressure">cm of H2O</string>
+    <string name="unit_acceleration">m/s2</string>
+    <string name="unit_inspiratory_on_delay">sec</string>
+    <string name="unit_t_pause"> </string>
+    <string name="unit_dummy1"> </string>
 
     <!-- GROUP 4 A -->
     <string name="oxygen_sensor">Oxygen Sensor</string>
@@ -135,17 +145,38 @@
     <string name="actual_inspiratory_time">Actual Inspiratory Time</string>
     <string name="actual_expiratory_time">Actual Expiratory Time</string>
 
+    <string name="unit_oxygen_sensor">%</string>
+    <string name="unit_inspiratory_pressure_sensor">cm of H2O</string>
+    <string name="unit_expiratory_flow_sensor">cm of H2O</string>
+    <string name="unit_expiratory_pressure_sensor">cm of H2O</string>
+    <string name="unit_inspiratory_flow_sensor">lpm</string>
+    <string name="unit_actual_breath_time">sec</string>
+    <string name="unit_actual_inspiratory_time">sec</string>
+    <string name="unit_actual_expiratory_time"> </string>
+
     <!-- GROUP 5 B -->
     <string name="inspiration_velocity">Inspiration Velocity</string>
     <string name="expiration_velocity">Expiration Velocity</string>
     <string name="breath_time">Breath Time</string>
+
+    <string name="unit_inspiration_velocity">m/sy</string>
+    <string name="unit_expiration_velocity">m/s</string>
+    <string name="unit_breath_time"> </string>
 
     <!-- GROUP 6 A -->
     <string name="actual_flow">Actual Flow</string>
     <string name="actual_pressure">Actual Pressure</string>
     <string name="actual_volume">Actual Volume</string>
     <string name="reference_time">Reference Time</string>
+
+    <string name="unit_actual_flow">cm of H2O</string>
+    <string name="unit_actual_pressure">lpm</string>
+    <string name="unit_actual_volume">ml</string>
+    <string name="unit_reference_time">sec</string>
+
     <string name="graph_view">Graph View</string>
+
+
     <string name="title_activity_home">HomeActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -160,8 +191,8 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
-    <string name="data_fetch_time">Data Fetch Time</string>
-    <string name="graph_update_time">Graph Update Interval</string>
+    <string name="data_fetch_time">App Polling Rate</string>
+    <string name="graph_update_time">Graph Polling Rate</string>
     <string name="max_values_in_graph">Max visible entries in graph</string>
     <string name="change_ip">Click Here to change IP Address</string>
 

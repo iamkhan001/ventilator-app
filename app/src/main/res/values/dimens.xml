@@ -21,6 +21,7 @@
     <dimen name="space_xl">25dp</dimen>
     <dimen name="span_xxl">35dp</dimen>
     <dimen name="graph_height">200dp</dimen>
+    <dimen name="text_small">13sp</dimen>
 
 
 </resources>

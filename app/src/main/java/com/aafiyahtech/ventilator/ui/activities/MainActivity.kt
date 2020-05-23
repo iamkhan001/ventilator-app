@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import com.aafiyahtech.ventilator.R
+import com.aafiyahtech.ventilator.models.MessageEvent
 import com.aafiyahtech.ventilator.ui.viewModels.MainViewModel
+import org.greenrobot.eventbus.EventBus
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,6 +19,12 @@ class MainActivity : AppCompatActivity() {
         val model: MainViewModel by viewModels()
         model.init(this)
 
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+
+        EventBus.getDefault().post(MessageEvent.UPDATE_CONFIG)
     }
 
 
