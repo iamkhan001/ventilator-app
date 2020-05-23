@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:focusable="true"
+    android:clickable="true"
+    android:orientation="vertical"
+    tools:context=".ui.fragments.Group_1_A_Fragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/imgBack"
+                    android:tint="@color/white"
+                    android:src="@drawable/ic_arrow"
+                    android:layout_width="@dimen/img_back"
+                    android:layout_height="@dimen/img_back"/>
+
+
+                <TextView
+                    android:textSize="@dimen/text_large"
+                    android:text="Ventilator Configuration"
+                    android:textColor="@color/white"
+                    android:padding="@dimen/space_normal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+
+            </LinearLayout>
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <ScrollView
+            android:layout_alignParentTop="true"
+            android:layout_above="@id/btnUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="@dimen/space_large">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/mfTidalVol"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_border"
+                    android:padding="@dimen/space_normal"
+                    android:layout_marginStart="@dimen/space_normal"
+                    android:layout_marginEnd="@dimen/space_normal"
+                    android:layout_marginTop="@dimen/space_normal"
+                    android:layout_marginBottom="@dimen/space_small"
+                    android:hint="@string/tidal_volume"
+                    app:boxBackgroundColor="#20D81B60">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etTidalVol"
+                        android:digits="1234567890."
+                        android:inputType="number"
+                        android:background="@color/transparent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_marginStart="@dimen/space_normal"
+                    android:layout_marginEnd="@dimen/space_normal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tvRngTidalVol"
+                        android:text="Range 100 to 1000"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/tvDefTidalVol"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/text_default"
+                        android:textColor="@color/blue"
+                        android:drawableEnd="@drawable/ic_loop"
+                        android:text="Default 100"
+                        android:drawablePadding="@dimen/space_small"
+                        android:gravity="end"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"/>
+
+
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/mfPeakVol"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_border"
+                    android:padding="@dimen/space_normal"
+                    android:layout_marginStart="@dimen/space_normal"
+                    android:layout_marginEnd="@dimen/space_normal"
+                    android:layout_marginTop="@dimen/space_large"
+                    android:layout_marginBottom="@dimen/space_small"
+                    android:hint="@string/peak_volume"
+                    app:boxBackgroundColor="#20D81B60">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etPeakVol"
+                        android:digits="1234567890."
+                        android:inputType="number"
+                        android:background="@color/transparent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_marginStart="@dimen/space_normal"
+                    android:layout_marginEnd="@dimen/space_normal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tvRngPeakVol"
+                        android:text="Range 100 to 1000"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/tvDefPeakVol"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/text_default"
+                        android:textColor="@color/blue"
+                        android:drawableEnd="@drawable/ic_loop"
+                        android:drawablePadding="@dimen/space_small"
+                        android:text="Default 100"
+                        android:gravity="end"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"/>
+
+
+                </LinearLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/mfPip"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_border"
+                    android:padding="@dimen/space_normal"
+                    android:layout_marginStart="@dimen/space_normal"
+                    android:layout_marginEnd="@dimen/space_normal"
+                    android:layout_marginTop="@dimen/space_large"
+                    android:layout_marginBottom="@dimen/space_small"             android:hint="@string/pip"
+                    app:boxBackgroundColor="#20D81B60">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etPip"
+                        android:digits="1234567890."
+                        android:inputType="number"
+                        android:background="@color/transparent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_marginStart="@dimen/space_normal"
+                    android:layout_marginEnd="@dimen/space_normal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tvRngPip"
+                        android:text="Range 100 to 1000"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/tvDefPip"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/text_default"
+                        android:textColor="@color/blue"
+                        android:drawableEnd="@drawable/ic_loop"
+                        android:drawablePadding="@dimen/space_small"
+                        android:text="Default 100"
+                        android:gravity="end"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"/>
+
+
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/mfPeep"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_border"
+                    android:padding="@dimen/space_normal"
+                    android:layout_marginStart="@dimen/space_normal"
+                    android:layout_marginEnd="@dimen/space_normal"
+                    android:layout_marginTop="@dimen/space_large"
+                    android:layout_marginBottom="@dimen/space_small"                android:hint="@string/peep"
+                    app:boxBackgroundColor="#20D81B60">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etPeep"
+                        android:digits="1234567890"
+                        android:inputType="number"
+                        android:background="@color/transparent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_marginStart="@dimen/space_normal"
+                    android:layout_marginEnd="@dimen/space_normal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tvRngPeep"
+                        android:text="Range 100 to 1000"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/tvDefPeep"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/text_default"
+                        android:textColor="@color/blue"
+                        android:drawableEnd="@drawable/ic_loop"
+                        android:drawablePadding="@dimen/space_small"
+                        android:text="Default 100"
+                        android:gravity="end"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"/>
+
+
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/mfPressure"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_border"
+                    android:padding="@dimen/space_normal"
+                    android:layout_marginStart="@dimen/space_normal"
+                    android:layout_marginEnd="@dimen/space_normal"
+                    android:layout_marginTop="@dimen/space_large"
+                    android:layout_marginBottom="@dimen/space_small"
+                    android:hint="@string/pressure_support"
+                    app:boxBackgroundColor="#20D81B60">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etPressure"
+                        android:digits="1234567890"
+                        android:inputType="number"
+                        android:background="@color/transparent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_marginStart="@dimen/space_normal"
+                    android:layout_marginEnd="@dimen/space_normal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tvRngPressure"
+                        android:text="Range 100 to 1000"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/tvDefPressure"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/text_default"
+                        android:textColor="@color/blue"
+                        android:drawableEnd="@drawable/ic_loop"
+                        android:drawablePadding="@dimen/space_small"
+                        android:text="Default 100"
+                        android:gravity="end"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"/>
+
+
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/mfOxy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_border"
+                    android:padding="@dimen/space_normal"
+                    android:layout_marginStart="@dimen/space_normal"
+                    android:layout_marginEnd="@dimen/space_normal"
+                    android:layout_marginTop="@dimen/space_large"
+                    android:layout_marginBottom="@dimen/space_small"                android:hint="@string/oxygen_rate"
+                    app:boxBackgroundColor="#20D81B60">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etOxy"
+                        android:digits="1234567890"
+                        android:inputType="number"
+                        android:background="@color/transparent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_marginStart="@dimen/space_normal"
+                    android:layout_marginEnd="@dimen/space_normal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tvRngOxy"
+                        android:text="Range 100 to 1000"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/tvDefOxy"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/text_default"
+                        android:textColor="@color/blue"
+                        android:drawableEnd="@drawable/ic_loop"
+                        android:drawablePadding="@dimen/space_small"
+                        android:text="Default 100"
+                        android:gravity="end"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"/>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <Button
+            android:id="@+id/btnUpdate"
+            android:layout_margin="@dimen/space_normal"
+            android:text="@string/update"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:textColor="@color/white"
+            android:background="@drawable/button_primary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

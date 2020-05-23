@@ -7,32 +7,85 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.aafiyahtech.ventilator.fragments.HomeFragment"
+        android:name="com.aafiyahtech.ventilator.ui.fragments.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_main" >
         <action
-            android:id="@+id/action_homeFragment_to_configFragment"
-            app:destination="@id/configFragment" />
+            android:id="@+id/action_homeFragment_to_groupListFragment"
+            app:destination="@id/groupListFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_statusFragment"
-            app:destination="@id/statusFragment" />
+            android:id="@+id/action_homeFragment_to_group_3_A_Fragment"
+            app:destination="@id/group_3_A_Fragment" />
         <action
-            android:id="@+id/action_homeFragment_to_graphsFragment"
-            app:destination="@id/graphsFragment" />
+            android:id="@+id/action_homeFragment_to_group_3_B_Fragment"
+            app:destination="@id/group_3_B_Fragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_group_5_B_Fragment"
+            app:destination="@id/group_5_B_Fragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/configFragment"
-        android:name="com.aafiyahtech.ventilator.fragments.ConfigFragment"
-        android:label="fragment_config"
-        tools:layout="@layout/fragment_config" />
-    <fragment
-        android:id="@+id/statusFragment"
-        android:name="com.aafiyahtech.ventilator.fragments.StatusFragment"
+        android:id="@+id/groupListFragment"
+        android:name="com.aafiyahtech.ventilator.ui.fragments.GroupListFragment"
         android:label="fragment_status"
-        tools:layout="@layout/fragment_status" />
+        tools:layout="@layout/fragment_status" >
+        <action
+            android:id="@+id/action_groupListFragment_to_group_1_A_Fragment"
+            app:destination="@id/group_1_A_Fragment" />
+        <action
+            android:id="@+id/action_groupListFragment_to_group_2_B_Fragment"
+            app:destination="@id/group_2_B_Fragment" />
+        <action
+            android:id="@+id/action_groupListFragment_to_group_1_B_Fragment"
+            app:destination="@id/group_1_B_Fragment" />
+        <action
+            android:id="@+id/action_groupListFragment_to_group_2_A_Fragment"
+            app:destination="@id/group_2_A_Fragment" />
+        <argument
+            android:name="type"
+            app:argType="string"
+            android:defaultValue="Group_1_A" />
+    </fragment>
     <fragment
-        android:id="@+id/graphsFragment"
-        android:name="com.aafiyahtech.ventilator.fragments.GraphsFragment"
-        android:label="fragment_graphs"
-        tools:layout="@layout/fragment_graphs" />
+        android:id="@+id/group_1_A_Fragment"
+        android:name="com.aafiyahtech.ventilator.ui.fragments.Group_1_A_Fragment"
+        android:label="fragment_1_a"
+        tools:layout="@layout/fragment_1_a" />
+    <fragment
+        android:id="@+id/group_1_B_Fragment"
+        android:name="com.aafiyahtech.ventilator.ui.fragments.Group_1_B_Fragment"
+        android:label="fragment_1_b"
+        tools:layout="@layout/fragment_1_b" />
+    <fragment
+        android:id="@+id/group_2_A_Fragment"
+        android:name="com.aafiyahtech.ventilator.ui.fragments.Group_2_A_Fragment"
+        android:label="fragment_2_a"
+        tools:layout="@layout/fragment_2_a" />
+    <fragment
+        android:id="@+id/group_2_B_Fragment"
+        android:name="com.aafiyahtech.ventilator.ui.fragments.Group_2_B_Fragment"
+        android:label="fragment_2_b"
+        tools:layout="@layout/fragment_2_b" />
+    <fragment
+        android:id="@+id/group_3_A_Fragment"
+        android:name="com.aafiyahtech.ventilator.ui.fragments.Group_3_A_Fragment"
+        android:label="fragment_3_a"
+        tools:layout="@layout/fragment_3_a" />
+    <fragment
+        android:id="@+id/group_3_B_Fragment"
+        android:name="com.aafiyahtech.ventilator.ui.fragments.Group_3_B_Fragment"
+        android:label="fragment_3_b"
+        tools:layout="@layout/fragment_3_b" />
+    <fragment
+        android:id="@+id/group_5_B_Fragment"
+        android:name="com.aafiyahtech.ventilator.ui.fragments.Group_5_B_Fragment"
+        android:label="fragment_5_b"
+        tools:layout="@layout/fragment_5_b" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.aafiyahtech.ventilator.ui.fragments.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
 </navigation>

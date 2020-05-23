@@ -1,6 +1,168 @@
 <resources>
     <string name="app_name">Ventilator</string>
+    <string name="update">Update</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Names -->
+    <!--  group 1 a -->
+    <string name="tidal_volume">Tidal Volume</string>
+    <string name="peak_volume">Peak Volume</string>
+    <string name="pip">Peak Inspiratory Pressure</string>
+    <string name="peep">Positive End Expiratory Pressure</string>
+    <string name="pressure_support">Pressure Support</string>
+    <string name="oxygen_rate">Oxygen</string>
+
+    <!--  group 1 b -->
+    <string name="respiratory_rate">Respiratory Rate (BPM)</string>
+    <string name="inspirator_time">Inspirator Time</string>
+    <string name="inspiratory_end_delay">Inspiratory End Delay</string>
+    <string name="trigger_type">Trigger Type</string>
+    <string name="trigger_time">Trigger Time</string>
+    <string name="trigger_pressure">Trigger Pressure</string>
+    <string name="trigger_flow">Trigger Flow</string>
+    <string name="vent_mode">Mode</string>
+
+    <!-- group 2 a -->
+    <string name="inspiration_value">Inspiration Value I:E Ratio</string>
+    <string name="expiration_value">Expiration Value I:E Ratio</string>
+    <string name="min_pressure">Min Pressure</string>
+    <string name="max_pressure">Max Pressure</string>
+    <string name="min_air_flow">Min Air Flow</string>
+    <string name="max_air_flow">Max Air Flow</string>
+    <string name="min_volume">Volume Low Alarm</string>
+    <string name="max_volume">Volume High Alarm</string>
+    <string name="min_oxygen">Oxygen Low Alarm</string>
+    <string name="max_oxygen">Oxygen High Alarm</string>
+
+    <!-- group 2 b -->
+    <string name="minute_ventilation">Minute Ventilation</string>
+    <string name="expiratory_end_delay">Expiratory End Delay</string>
+    <string name="termination_type">Termination Type</string>
+
+    <!-- Abbreviation -->
+    <!--  group 1 a -->
+    <string name="abbr_tidal_volume">Vt</string>
+    <string name="abbr_peak_volume">Vp</string>
+    <string name="abbr_pip">pip</string>
+    <string name="abbr_peep">peep</string>
+    <string name="abbr_pressure_support">Pressure Support</string>
+    <string name="abbr_oxygen_rate">O2</string>
+
+    <!--  group 1 b -->
+    <string name="abbr_respiratory_rate">RR</string>
+    <string name="abbr_inspirator_time">It</string>
+    <string name="abbr_inspiratory_end_delay">T PAUSE</string>
+    <string name="abbr_trigger_type">Trigger Type</string>
+    <string name="abbr_trigger_time">Trigger Time</string>
+    <string name="abbr_trigger_pressure">Trigger Pressure</string>
+    <string name="abbr_trigger_flow">Trigger Flow</string>
+    <string name="abbr_vent_mode">Mode</string>
+
+    <!-- group 2 a -->
+    <string name="abbr_inspiration_value">I</string>
+    <string name="abbr_expiration_value">E</string>
+    <string name="abbr_min_pressure">Pmin</string>
+    <string name="abbr_max_pressure">Pmax</string>
+    <string name="abbr_min_air_flow">Fmin</string>
+    <string name="abbr_max_air_flow">Fmax</string>
+    <string name="abbr_min_volume">Vmin</string>
+    <string name="abbr_max_volume">Vmax</string>
+    <string name="abbr_min_oxygen">O2 low</string>
+    <string name="abbr_max_oxygen">O2 high</string>
+
+    <!-- group 2 b -->
+    <string name="abbr_minute_ventilation">Ve</string>
+    <string name="abbr_expiratory_end_delay">eed</string>
+    <string name="abbr_termination_type">tn</string>
+
+    <!-- UNITS -->
+    <!--  group 1 a -->
+    <string name="unit_tidal_volume">ml</string>
+    <string name="unit_peak_volume">ml</string>
+    <string name="unit_pip">cm of H2O</string>
+    <string name="unit_peep">cm of H2O</string>
+    <string name="unit_pressure_support">cm of H2O</string>
+    <string name="unit_oxygen_rate">%</string>
+
+    <!--  group 1 b -->
+    <string name="unit_vent_mode">na</string>
+    <string name="unit_trigger_flow">lpm</string>
+    <string name="unit_trigger_pressure">cm of H2O</string>
+    <string name="unit_trigger_time">msec</string>
+    <string name="unit_trigger_type"> </string>
+    <string name="unit_inspiratory_end_delay">sec</string>
+    <string name="unit_inspirator_time">sec</string>
+    <string name="unit_respiratory_rate">BMP</string>
+
+    <!-- group 2 a -->
+    <string name="unit_inspiration_value">NA</string>
+    <string name="unit_expiration_value">NA</string>
+    <string name="unit_min_pressure">cm of H2O</string>
+    <string name="unit_max_pressure">cm of H2O</string>
+    <string name="unit_min_air_flow">lpm</string>
+    <string name="unit_max_air_flow">lpm</string>
+    <string name="unit_min_volume">ml</string>
+    <string name="unit_max_volume">ml</string>
+    <string name="unit_min_oxygen">%</string>
+    <string name="unit_max_oxygen">%</string>
+
+    <!-- group 2 b -->
+    <string name="unit_termination_type">na</string>
+    <string name="unit_expiratory_end_delay">sec</string>
+    <string name="unit_minute_ventilation">lpm</string>
+    <string name="dialog_default_title">Loading...</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_ok">OK</string>
+
+    <!-- GROUP 3 A -->
+    <string name="app_polling_rate">App Polling rate</string>
+    <string name="graph_polling_rate">Graph Polling rate</string>
+    <string name="graph_type">Graph Type</string>
+
+    <!-- GROUP 3 B -->
+    <string name="plate_pressure">Plate Pressure</string>
+    <string name="acceleration">Acceleration</string>
+    <string name="inspiratory_on_delay">Inspiratory ON Delay</string>
+    <string name="t_pause">T-Pause</string>
+    <string name="dummy1">Dummy 1</string>
+
+    <!-- GROUP 4 A -->
+    <string name="oxygen_sensor">Oxygen Sensor</string>
+    <string name="inspiratory_pressure_sensor">Inspiratory Pressure Sensor</string>
+    <string name="expiratory_flow_sensor">Expiratory Flow Sensor</string>
+    <string name="expiratory_pressure_sensor">Expiratory Pressure Sensor</string>
+    <string name="inspiratory_flow_sensor">Inspiratory Flow Sensor</string>
+    <string name="actual_breath_time">Actual Breath Time</string>
+    <string name="actual_inspiratory_time">Actual Inspiratory Time</string>
+    <string name="actual_expiratory_time">Actual Expiratory Time</string>
+
+    <!-- GROUP 5 B -->
+    <string name="inspiration_velocity">Inspiration Velocity</string>
+    <string name="expiration_velocity">Expiration Velocity</string>
+    <string name="breath_time">Breath Time</string>
+
+    <!-- GROUP 6 A -->
+    <string name="actual_flow">Actual Flow</string>
+    <string name="actual_pressure">Actual Pressure</string>
+    <string name="actual_volume">Actual Volume</string>
+    <string name="reference_time">Reference Time</string>
+    <string name="graph_view">Graph View</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+    <string name="data_fetch_time">Data Fetch Time</string>
+    <string name="graph_update_time">Graph Update Interval</string>
+    <string name="max_values_in_graph">Max visible entries in graph</string>
+    <string name="change_ip">Click Here to change IP Address</string>
+
 </resources>

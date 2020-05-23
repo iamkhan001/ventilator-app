@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:focusable="true"
+    android:clickable="true"
+    android:orientation="vertical"
+    tools:context=".ui.fragments.Group_6_A_Fragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/imgBack"
+                    android:tint="@color/white"
+                    android:src="@drawable/ic_arrow"
+                    android:layout_width="@dimen/img_back"
+                    android:layout_height="@dimen/img_back"/>
+
+
+                <TextView
+                    android:textSize="@dimen/text_large"
+                    android:text="Ventilator Configuration"
+                    android:textColor="@color/white"
+                    android:padding="@dimen/space_normal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+
+            </LinearLayout>
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        android:orientation="vertical">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/mfActFlow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_border"
+            android:padding="@dimen/space_normal"
+            android:layout_margin="@dimen/space_normal"
+            android:hint="@string/actual_flow"
+            app:boxBackgroundColor="#20D81B60">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etActFlow"
+                android:digits="1234567890."
+                android:inputType="number"
+                android:background="@color/transparent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/mfActPressure"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_border"
+            android:padding="@dimen/space_normal"
+            android:layout_marginStart="@dimen/space_normal"
+            android:layout_marginEnd="@dimen/space_normal"
+            android:layout_marginTop="@dimen/space_large"
+            android:layout_marginBottom="@dimen/space_normal"
+            android:hint="@string/actual_pressure"
+            app:boxBackgroundColor="#20D81B60">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etActPressure"
+                android:digits="1234567890."
+                android:inputType="number"
+                android:background="@color/transparent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/mfActVol"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_border"
+            android:padding="@dimen/space_normal"
+            android:layout_marginStart="@dimen/space_normal"
+            android:layout_marginEnd="@dimen/space_normal"
+            android:layout_marginTop="@dimen/space_large"
+            android:layout_marginBottom="@dimen/space_normal"
+            android:hint="@string/actual_volume"
+            app:boxBackgroundColor="#20D81B60">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etActVol"
+                android:digits="1234567890."
+                android:inputType="number"
+                android:background="@color/transparent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/mfRefTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_border"
+            android:padding="@dimen/space_normal"
+            android:layout_margin="@dimen/space_normal"
+            android:hint="@string/reference_time"
+            app:boxBackgroundColor="#20D81B60">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etRefTime"
+                android:digits="1234567890."
+                android:inputType="number"
+                android:background="@color/transparent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnUpdate"
+        android:layout_margin="@dimen/space_normal"
+        android:text="@string/update"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_gravity="bottom"
+        android:textColor="@color/white"
+        android:background="@drawable/button_primary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

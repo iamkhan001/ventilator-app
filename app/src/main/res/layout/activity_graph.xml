@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.activities.GraphActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/imgBack"
+                    android:tint="@color/white"
+                    android:src="@drawable/ic_arrow"
+                    android:layout_width="@dimen/img_back"
+                    android:layout_height="@dimen/img_back"/>
+
+
+                <TextView
+                    android:textSize="@dimen/text_large"
+                    android:text="@string/graph_view"
+                    android:textColor="@color/white"
+                    android:padding="@dimen/space_normal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+
+            </LinearLayout>
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        app:layout_constraintTop_toBottomOf="@id/appBar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/graph1"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/graph_height"/>
+
+            <TextView
+                android:id="@+id/tvActualPressure"
+                android:gravity="center_horizontal"
+                android:layout_margin="@dimen/space_small"
+                android:text="@string/actual_pressure"
+                app:layout_constraintTop_toBottomOf="@id/graph1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/graph2"
+                android:layout_marginTop="@dimen/space_normal"
+                app:layout_constraintTop_toBottomOf="@id/tvActualPressure"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/graph_height"/>
+
+            <TextView
+                android:id="@+id/tvActualFlow"
+                android:gravity="center_horizontal"
+                android:layout_margin="@dimen/space_small"
+                android:text="@string/actual_flow"
+                app:layout_constraintTop_toBottomOf="@id/graph2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/graph3"
+                android:layout_marginTop="@dimen/space_normal"
+                app:layout_constraintTop_toBottomOf="@id/tvActualFlow"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/graph_height"/>
+
+            <TextView
+                android:id="@+id/tvActualVol"
+                android:gravity="center_horizontal"
+                android:layout_margin="@dimen/space_small"
+                android:text="@string/actual_volume"
+                app:layout_constraintTop_toBottomOf="@id/graph3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

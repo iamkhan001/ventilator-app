@@ -2,6 +2,7 @@ package com.aafiyahtech.ventilator.utils
 
 import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import com.koushikdutta.ion.Ion
 import org.json.JSONObject
 
@@ -15,6 +16,9 @@ class Repository (private val context: Context) {
 
     fun getConfig(iResponse: IResponse) {
 
+        val api = "$url?req=get_config"
+        Log.e(tag, "api: $api")
+        showMessage(api)
         Ion.with(context)
             .load(url)
             .addQuery("req","get_config")
@@ -80,10 +84,12 @@ class Repository (private val context: Context) {
         expiratoryEnd: Int,
         iResponse: IResponse
     ) {
+        val api = "$url?req=update_config&ie_ratio=$ieRatio&respiratory_rate=$respiratoryRate&tidal_vol=$tidalVol&inspiratory_on=$inspiratoryOn&inspiratory_end=$inspiratoryEnd&expiratory_on=$expiratoryOn&expiratory_end=$expiratoryEnd"
+        Log.e(tag,api)
 
         Ion.with(context)
             .load(url)
-            .addQuery("req","get_config")
+            .addQuery("req","update_config")
             .addQuery("ie_ratio","$ieRatio")
             .addQuery("respiratory_rate","$respiratoryRate")
             .addQuery("tidal_vol","$tidalVol")
@@ -93,6 +99,9 @@ class Repository (private val context: Context) {
             .addQuery("expiratory_end","$expiratoryEnd")
             .asString()
             .setCallback { e, result ->
+
+
+                showMessage(api)
 
                 if (e != null) {
                     iResponse.onError("Error Occurred!")
@@ -131,9 +140,13 @@ class Repository (private val context: Context) {
 
     fun getStatus(iResponse: IResponse) {
 
+        val api = "$url?req=get_status"
+        Log.e(tag, "api: $api")
+        showMessage(api)
+
         Ion.with(context)
             .load(url)
-            .addQuery("req","get_status")
+            .addQuery("req", "get_status")
             .asString()
             .setCallback { e, result ->
 
@@ -188,9 +201,12 @@ class Repository (private val context: Context) {
 
     fun getGraph(iResponse: IResponse) {
 
+        val api = "$url?req=get_graph"
+        Log.e(tag, "api: $api")
+
         Ion.with(context)
             .load(url)
-            .addQuery("req","get_graph")
+            .addQuery("req", "get_graph")
             .asString()
             .setCallback { e, result ->
 
@@ -282,5 +298,8 @@ class Repository (private val context: Context) {
 
     }
 
+    private fun showMessage(msg: String) {
+        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
+    }
 
 }

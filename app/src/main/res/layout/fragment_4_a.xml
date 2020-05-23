@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:focusable="true"
+    android:clickable="true"
+    android:orientation="vertical"
+    tools:context=".ui.fragments.Group_4_A_Fragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/imgBack"
+                    android:tint="@color/white"
+                    android:src="@drawable/ic_arrow"
+                    android:layout_width="@dimen/img_back"
+                    android:layout_height="@dimen/img_back"/>
+
+
+                <TextView
+                    android:textSize="@dimen/text_large"
+                    android:text="Ventilator Configuration"
+                    android:textColor="@color/white"
+                    android:padding="@dimen/space_normal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+
+            </LinearLayout>
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <Button
+            android:id="@+id/btnUpdate"
+            android:layout_margin="@dimen/space_normal"
+            android:text="@string/update"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:textColor="@color/white"
+            android:background="@drawable/button_primary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/btnUpdate"
+            android:layout_alignParentTop="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/mfOxyPercentage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_border"
+                    android:padding="@dimen/space_normal"
+                    android:layout_margin="@dimen/space_normal"
+                    android:hint="@string/oxygen_sensor"
+                    app:boxBackgroundColor="#20D81B60">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etOxyPercentage"
+                        android:digits="1234567890."
+                        android:inputType="number"
+                        android:background="@color/transparent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/mfInsFlow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_border"
+                    android:padding="@dimen/space_normal"
+                    android:layout_margin="@dimen/space_normal"
+                    android:hint="@string/inspiratory_flow_sensor"
+                    app:boxBackgroundColor="#20D81B60">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etInsFlow"
+                        android:digits="1234567890."
+                        android:inputType="number"
+                        android:background="@color/transparent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/mfExpFlow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_border"
+                    android:padding="@dimen/space_normal"
+                    android:layout_marginStart="@dimen/space_normal"
+                    android:layout_marginEnd="@dimen/space_normal"
+                    android:layout_marginTop="@dimen/space_large"
+                    android:layout_marginBottom="@dimen/space_normal"
+                    android:hint="@string/expiratory_flow_sensor"
+                    app:boxBackgroundColor="#20D81B60">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etExpFlow"
+                        android:digits="1234567890."
+                        android:inputType="number"
+                        android:background="@color/transparent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/mfInsPressure"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_border"
+                    android:padding="@dimen/space_normal"
+                    android:layout_marginStart="@dimen/space_normal"
+                    android:layout_marginEnd="@dimen/space_normal"
+                    android:layout_marginTop="@dimen/space_large"
+                    android:layout_marginBottom="@dimen/space_normal"
+                    android:hint="@string/inspiratory_pressure_sensor"
+                    app:boxBackgroundColor="#20D81B60">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etInsPressure"
+                        android:digits="1234567890."
+                        android:inputType="number"
+                        android:background="@color/transparent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/mfExpPressure"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_border"
+                    android:padding="@dimen/space_normal"
+                    android:layout_margin="@dimen/space_normal"
+                    android:hint="@string/expiratory_pressure_sensor"
+                    app:boxBackgroundColor="#20D81B60">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etExpPressure"
+                        android:digits="1234567890."
+                        android:inputType="number"
+                        android:background="@color/transparent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/mfActInsTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_border"
+                    android:padding="@dimen/space_normal"
+                    android:layout_marginStart="@dimen/space_normal"
+                    android:layout_marginEnd="@dimen/space_normal"
+                    android:layout_marginTop="@dimen/space_large"
+                    android:layout_marginBottom="@dimen/space_normal"
+                    android:hint="@string/actual_inspiratory_time"
+                    app:boxBackgroundColor="#20D81B60">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etActInsTime"
+                        android:digits="1234567890."
+                        android:inputType="number"
+                        android:background="@color/transparent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/mfActExpTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_border"
+                    android:padding="@dimen/space_normal"
+                    android:layout_margin="@dimen/space_normal"
+                    android:hint="@string/actual_expiratory_time"
+                    app:boxBackgroundColor="#20D81B60">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etActExpTime"
+                        android:digits="1234567890."
+                        android:inputType="number"
+                        android:background="@color/transparent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/mfActualBreath"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_border"
+                    android:padding="@dimen/space_normal"
+                    android:layout_marginStart="@dimen/space_normal"
+                    android:layout_marginEnd="@dimen/space_normal"
+                    android:layout_marginTop="@dimen/space_large"
+                    android:layout_marginBottom="@dimen/space_normal"
+                    android:paddingBottom="@dimen/space_normal"
+                    android:hint="@string/actual_breath_time"
+                    app:boxBackgroundColor="#20D81B60">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etActualBreath"
+                        android:digits="1234567890."
+                        android:inputType="number"
+                        android:background="@color/transparent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </LinearLayout>
+
+
+        </ScrollView>
+    </RelativeLayout>
+
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
