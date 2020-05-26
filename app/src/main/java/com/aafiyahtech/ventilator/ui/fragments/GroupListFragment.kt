@@ -276,6 +276,16 @@ class GroupListFragment : Fragment() {
         isReady = false
 
         list.clear()
+
+        list.add(
+            VentilatorStatus(getString(R.string.vent_mode), item.getVentilatorModeName(), getString(R.string.unit_vent_mode))
+        )
+        list.add(
+            VentilatorStatus(getString(R.string.trigger_type), item.getTriggerTypeName(), getString(R.string.unit_trigger_type))
+        )
+        list.add(
+            VentilatorStatus(getString(R.string.termination_type), item.getTerminationTypeName(), getString(R.string.unit_termination_type))
+        )
         list.add(
             VentilatorStatus(getString(R.string.respiratory_rate), "${item.respiratoryRate}", getString(R.string.unit_respiratory_rate))
         )
@@ -297,10 +307,6 @@ class GroupListFragment : Fragment() {
         list.add(
             VentilatorStatus(getString(R.string.trigger_flow), "${item.triggerFlow}", getString(R.string.unit_trigger_flow))
         )
-        list.add(
-            VentilatorStatus(getString(R.string.vent_mode), item.getVentilatorModeName(), getString(R.string.unit_vent_mode))
-        )
-
 
         adapter.notifyDataSetChanged()
         isReady = true
@@ -358,9 +364,6 @@ class GroupListFragment : Fragment() {
         )
         list.add(
             VentilatorStatus(getString(R.string.expiratory_end_delay), "${item.expiratoryEndDelay}", getString(R.string.unit_expiratory_end_delay))
-        )
-        list.add(
-            VentilatorStatus(getString(R.string.termination_type), item.getTerminationTypeName(), getString(R.string.unit_termination_type))
         )
 
         adapter.notifyDataSetChanged()

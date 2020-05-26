@@ -10,7 +10,8 @@ data class Group_1_B(
     @SerializedName("TriggerTime") var triggerTime: Int,
     @SerializedName("TriggerPressure") var triggerPressure: Float,
     @SerializedName("TriggerFlow") var triggerFlow: Float,
-    @SerializedName("VentMode") var ventMode: Int
+    @SerializedName("VentMode") var ventMode: Int,
+    @SerializedName("TerminationType") var terminationType: Int
 ){
 
     fun getVentilatorModeName(): String{
@@ -25,6 +26,29 @@ data class Group_1_B(
             7-> "CPAP"
             8-> "BiPAP"
             else -> "$ventMode"
+        }
+
+    }
+
+    fun getTerminationTypeName(): String{
+
+        return when(terminationType) {
+            1-> "End Inspiration"
+            2-> "Tidal Volume"
+            3-> "Flow"
+            4-> "Time"
+            else -> "$terminationType"
+        }
+
+    }
+
+    fun getTriggerTypeName(): String{
+
+        return when(triggerType) {
+            1-> "Time"
+            2-> "Pressure"
+            3-> "Flow"
+            else -> "$triggerType"
         }
 
     }

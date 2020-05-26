@@ -31,8 +31,7 @@ class Group_2_B_Fragment : Fragment() {
     private val model: MainViewModel by activityViewModels()
     private lateinit var apiCaller: ApiCaller
     private var alertDialog: SweetAlertDialog? = null
-    private val terminationTypes = arrayOf("End Inspiration", "Tidal Volume", "Flow", "Time")
-    private var terminationType = 1
+
 
     private val onApiErrorListener = object : ApiCaller.OnApiResponseListener{
         override fun onError(msg: String) {
@@ -106,15 +105,7 @@ class Group_2_B_Fragment : Fragment() {
     private fun setDetails(group: Group_2_B) {
         etMntVnt.setText("${group.minuteVentilation}")
         etExpEndDly.setText("${group.expiratoryEndDelay}")
-        try {
-            if(group.terminationType in 1..terminationTypeMax){
-                spnTerType.setSelection(group.terminationType-1)
-            }else {
-                MyMessage.showToast(requireContext(), "Invalid Termination Type Value")
-            }
-        }catch (e: Exception){
-            spnTerType.setSelection(0)
-        }
+
     }
 
     private fun validateAndUpdate() {
@@ -152,8 +143,7 @@ class Group_2_B_Fragment : Fragment() {
 
         val g2a = Group_2_B(
             minuteVentilation = minVent,
-            expiratoryEndDelay = expEnd,
-            terminationType = terminationType
+            expiratoryEndDelay = expEnd
         )
 
         alertDialog = SweetAlertDialog(requireContext(), SweetAlertDialog.PROGRESS_TYPE)
@@ -168,25 +158,7 @@ class Group_2_B_Fragment : Fragment() {
     @SuppressLint("SetTextI18n")
     private fun initViews(){
 
-        val adapter = ArrayAdapter<String>(requireContext(), R.layout.item_text, terminationTypes)
-        spnTerType.adapter = adapter
 
-        spnTerType.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                terminationType = 1
-            }
-
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                terminationType = position+1
-            }
-
-        }
 
         tvRngMntVnt.text = "Range $minuteVentilationMin to $minuteVentilationMax"
         tvRngExpEndDly.text = "Range $expiratoryEndDelayMin to $expiratoryEndDelayMax"

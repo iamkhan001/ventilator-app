@@ -104,6 +104,47 @@
                     android:layout_marginBottom="@dimen/space_normal"                       android:hint="@string/respiratory_rate"
                     app:boxBackgroundColor="#20D81B60"/>
 
+                <TextView
+                    android:padding="@dimen/space_normal"
+                    android:layout_marginStart="@dimen/space_normal"
+                    android:layout_marginEnd="@dimen/space_normal"
+                    android:layout_marginTop="@dimen/space_normal"
+                    android:text="@string/trigger_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <Spinner
+                    android:id="@+id/spnTriggerType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_border"
+                    android:padding="@dimen/space_normal"
+                    android:layout_marginStart="@dimen/space_normal"
+                    android:layout_marginEnd="@dimen/space_normal"
+                    android:layout_marginBottom="@dimen/space_normal"                       android:hint="@string/respiratory_rate"
+                    app:boxBackgroundColor="#20D81B60"/>
+
+                <TextView
+                    android:padding="@dimen/space_normal"
+                    android:layout_marginStart="@dimen/space_normal"
+                    android:layout_marginEnd="@dimen/space_normal"
+                    android:layout_marginTop="@dimen/space_normal"
+                    android:text="@string/termination_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <Spinner
+                    android:id="@+id/spnTerType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_border"
+                    android:padding="@dimen/space_normal"
+                    android:layout_marginStart="@dimen/space_normal"
+                    android:layout_marginEnd="@dimen/space_normal"
+                    android:layout_marginBottom="@dimen/space_normal"
+                    android:hint="@string/respiratory_rate"
+                    app:boxBackgroundColor="#20D81B60"/>
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/mfRspRate"
                     android:layout_width="match_parent"
@@ -259,58 +300,6 @@
                 </LinearLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/mfTriggerType"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_border"
-                    android:padding="@dimen/space_normal"
-                    android:layout_marginStart="@dimen/space_normal"
-                    android:layout_marginEnd="@dimen/space_normal"
-                    android:layout_marginTop="@dimen/space_large"
-                    android:layout_marginBottom="@dimen/space_normal"
-                    android:hint="@string/trigger_type"
-                    app:boxBackgroundColor="#20D81B60">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etTriggerType"
-                        android:digits="1234567890"
-                        android:inputType="number"
-                        android:background="@color/transparent"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <LinearLayout
-                    android:layout_marginStart="@dimen/space_normal"
-                    android:layout_marginEnd="@dimen/space_normal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:id="@+id/tvRngTriggerType"
-                        android:text="Range 100 to 1000"
-                        android:layout_weight="1"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"/>
-
-                    <TextView
-                        android:id="@+id/tvDefTriggerType"
-                        android:textStyle="bold"
-                        android:textSize="@dimen/text_default"
-                        android:textColor="@color/blue"
-                        android:drawableEnd="@drawable/ic_loop"
-                        android:drawablePadding="@dimen/space_small"
-                        android:text="Default 100"
-                        android:gravity="end"
-                        android:layout_weight="1"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"/>
-
-
-                </LinearLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/mfTriggerTime"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -429,7 +418,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etTriggerFlow"
-                        android:digits="1234567890"
+                        android:digits="1234567890."
                         android:inputType="number"
                         android:background="@color/transparent"
                         android:layout_width="match_parent"

@@ -195,5 +195,9 @@
     <string name="graph_update_time">Graph Polling Rate</string>
     <string name="max_values_in_graph">Max visible entries in graph</string>
     <string name="change_ip">Click Here to change IP Address</string>
+    <string name="graph_sampling_range">Graph Sampling Range</string>
+    <string name="change_range">Click here to change range</string>
+    <string name="min">min</string>
+    <string name="max">max</string>
 
 </resources>

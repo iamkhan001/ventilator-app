@@ -23,7 +23,11 @@
         android:id="@+id/settingsFragment"
         android:name="com.aafiyahtech.ventilator.ui.fragments.SettingsFragment"
         android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" />
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_graphRangeFragment"
+            app:destination="@id/graphRangeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/groupListFragment"
         android:name="com.aafiyahtech.ventilator.ui.fragments.GroupListFragment"
@@ -95,4 +99,9 @@
         android:name="com.aafiyahtech.ventilator.ui.fragments.Group_3_C_Fragment"
         android:label="fragment_3_c"
         tools:layout="@layout/fragment_3_c" />
+    <fragment
+        android:id="@+id/graphRangeFragment"
+        android:name="com.aafiyahtech.ventilator.ui.fragments.GraphRangeFragment"
+        android:label="fragment_graph_range"
+        tools:layout="@layout/fragment_graph_range" />
 </navigation>

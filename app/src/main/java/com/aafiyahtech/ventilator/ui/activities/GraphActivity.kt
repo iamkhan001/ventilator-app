@@ -40,8 +40,17 @@ class GraphActivity : AppCompatActivity(), OnChartValueSelectedListener {
 
     companion object{
         private const val TAG = "GraphActivity"
-        private const val MAX_ENTRIES = 10
-        private const val MAXX = 10f
+        private var MAX_ENTRIES = 10
+        private var MAXX = 10f
+
+        const val actPressureMin = -10f
+        const val actPressureMax = 50f
+
+        const val actFlowMin = -100f
+        const val actFlowMax = 100f
+
+        const val actVolumeMin = 0f
+        const val actVolumeMax = 1000f
 
     }
 
@@ -50,6 +59,9 @@ class GraphActivity : AppCompatActivity(), OnChartValueSelectedListener {
 
     private  lateinit var tfRegular: Typeface
     private lateinit var tfLight: Typeface
+
+    private lateinit var appDataProvider: AppDataProvider
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_graph)
@@ -75,14 +87,28 @@ class GraphActivity : AppCompatActivity(), OnChartValueSelectedListener {
         tfRegular = Typeface.createFromAsset(assets, "OpenSans-Regular.ttf")
         tfLight = Typeface.createFromAsset(assets, "OpenSans-Light.ttf")
 
+        appDataProvider = AppDataProvider.getInstance(this.applicationContext)
+
+
+        val seconds = appDataProvider.getGraphEntries()
+        val delay = appDataProvider.getGraphUpdate()
+
+        val rate = (seconds * 1000) / delay
+
+        MAXX = rate.toFloat()
+        MAX_ENTRIES = rate
+
+        Log.e(TAG,"entries: ${appDataProvider.getGraphEntries()} delay: ${appDataProvider.getGraphUpdate()}")
+
         initGraph1()
         initGraph2()
         initGraph3()
 
 
-        apiCaller = ApiCaller(ApiCaller.GET_GROUP_6_A, AppDataProvider.getInstance(this.applicationContext).getIp())
+        apiCaller = ApiCaller(ApiCaller.GET_GROUP_6_A, appDataProvider.getIp())
         apiCaller.mGroup6a = model.mGroup6A
         apiCaller.isRecursive = true
+        apiCaller.delay = appDataProvider.getGraphUpdate().toLong()
 
         apiCaller.start()
     }
@@ -92,54 +118,55 @@ class GraphActivity : AppCompatActivity(), OnChartValueSelectedListener {
     private fun initGraph1() {
 
         //Graph 1
-        graph1.setOnChartValueSelectedListener(this)
+        graph1.setViewPortOffsets(0f, 0f, 0f, 0f)
+        graph1.setBackgroundColor(Color.rgb(104, 241, 175))
 
-        // enable description text
+        // no description text
         graph1.description.isEnabled = false
 
         // enable touch gestures
-        graph1.setTouchEnabled(false)
+        graph1.setTouchEnabled(true)
 
         // enable scaling and dragging
         graph1.isDragEnabled = false
         graph1.setScaleEnabled(false)
-        graph1.setDrawGridBackground(false)
 
         // if disabled, scaling can be done on x- and y-axis separately
         graph1.setPinchZoom(false)
 
-        // set an alternative background color
-        graph1.setBackgroundColor(Color.LTGRAY)
+        graph1.setDrawGridBackground(false)
+        graph1.maxHighlightDistance = 300f
+
+        val x = graph1.xAxis
+        x.isEnabled = false
+
+        val y = graph1.axisLeft
+        y.typeface = tfLight
+        y.setLabelCount(6, false)
+        y.textColor = Color.WHITE
+        y.setPosition(YAxis.YAxisLabelPosition.INSIDE_CHART)
+        y.setDrawGridLines(false)
+        y.axisLineColor = Color.WHITE
+        y.axisMinimum = appDataProvider.getActPressureMin()
+        y.axisMaximum = appDataProvider.getActPressureMax()
+
+        // add data
+
+        // lower max, as cubic runs significantly slower than linear
+
+
+        graph1.legend.isEnabled = false
+
+        graph1.animateXY(2000, 2000)
+
+        // don't forget to refresh the drawing
+
 
         var data = LineData()
         data.setValueTextColor(Color.WHITE)
 
         // add empty data
         graph1.data = data
-        // get the legend (only possible after setting data)
-        val l = graph1.legend
-
-        // modify the legend ...
-        l.form = Legend.LegendForm.LINE
-        l.typeface = tfLight
-        l.textColor = Color.WHITE
-
-        val xl = graph1.xAxis
-        xl.typeface = tfLight
-        xl.textColor = Color.WHITE
-        xl.setDrawGridLines(false)
-        xl.setAvoidFirstLastClipping(true)
-        xl.isEnabled = true
-
-        val leftAxis = graph1.axisLeft
-        leftAxis.typeface = tfLight
-        leftAxis.textColor = Color.WHITE
-        leftAxis.axisMaximum = 30f
-        leftAxis.axisMinimum = 0f
-        leftAxis.setDrawGridLines(true)
-
-        val rightAxis = graph1.axisRight
-        rightAxis.isEnabled = false
 
         data = graph1.data
 
@@ -151,68 +178,85 @@ class GraphActivity : AppCompatActivity(), OnChartValueSelectedListener {
 
                 if (set == null) {
                     set = createSet()
-                    data.addDataSet(set)
-                }
+                    set.mode = LineDataSet.Mode.LINEAR
+                    set.cubicIntensity = 0.2f
+                    set.setDrawFilled(true)
+                    set.setDrawCircles(false)
+                    set.lineWidth = 1.8f
+                    set.circleRadius = 4f
+                    set.setCircleColor(Color.WHITE)
+                    set.color = Color.WHITE
+                    set.fillColor = Color.WHITE
+                    set.fillAlpha = 0
+                    set.setDrawHorizontalHighlightIndicator(false)
 
+                    data.addDataSet(set)
+
+                }
                 data.addEntry(
                     Entry(set.entryCount.toFloat(), 0f),
                     0
                 )
             }
+
         }
+        graph1.invalidate()
+
     }
+
 
     private fun initGraph2() {
 
-        //Graph 1
-        graph2.setOnChartValueSelectedListener(this)
+        //Graph 2
+        graph2.setViewPortOffsets(0f, 0f, 0f, 0f)
+        graph2.setBackgroundColor(Color.rgb(104, 241, 175))
 
-        // enable description text
+        // no description text
         graph2.description.isEnabled = false
 
         // enable touch gestures
-        graph2.setTouchEnabled(false)
+        graph2.setTouchEnabled(true)
 
         // enable scaling and dragging
         graph2.isDragEnabled = false
         graph2.setScaleEnabled(false)
-        graph2.setDrawGridBackground(false)
 
         // if disabled, scaling can be done on x- and y-axis separately
         graph2.setPinchZoom(false)
 
-        // set an alternative background color
-        graph2.setBackgroundColor(Color.LTGRAY)
+        graph2.setDrawGridBackground(false)
+        graph2.maxHighlightDistance = 300f
+
+        val x = graph2.xAxis
+        x.isEnabled = false
+
+        val y = graph2.axisLeft
+        y.typeface = tfLight
+        y.setLabelCount(6, false)
+        y.textColor = Color.WHITE
+        y.setPosition(YAxis.YAxisLabelPosition.INSIDE_CHART)
+        y.setDrawGridLines(false)
+        y.axisLineColor = Color.WHITE
+        y.axisMinimum = appDataProvider.getActFlowMin()
+        y.axisMaximum = appDataProvider.getActFlowMax()
+
+        // add data
+
+        // lower max, as cubic runs significantly slower than linear
+
+
+        graph2.legend.isEnabled = false
+
+        graph2.animateXY(2000, 2000)
+
+        // don't forget to refresh the drawing
+
 
         var data = LineData()
         data.setValueTextColor(Color.WHITE)
 
         // add empty data
         graph2.data = data
-        // get the legend (only possible after setting data)
-        val l = graph2.legend
-
-        // modify the legend ...
-        l.form = Legend.LegendForm.LINE
-        l.typeface = tfLight
-        l.textColor = Color.WHITE
-
-        val xl = graph2.xAxis
-        xl.typeface = tfLight
-        xl.textColor = Color.WHITE
-        xl.setDrawGridLines(false)
-        xl.setAvoidFirstLastClipping(true)
-        xl.isEnabled = true
-
-        val leftAxis = graph2.axisLeft
-        leftAxis.typeface = tfLight
-        leftAxis.textColor = Color.WHITE
-        leftAxis.axisMaximum = 30f
-        leftAxis.axisMinimum = 0f
-        leftAxis.setDrawGridLines(true)
-
-        val rightAxis = graph2.axisRight
-        rightAxis.isEnabled = false
 
         data = graph2.data
 
@@ -224,68 +268,83 @@ class GraphActivity : AppCompatActivity(), OnChartValueSelectedListener {
 
                 if (set == null) {
                     set = createSet()
-                    data.addDataSet(set)
-                }
+                    set.mode = LineDataSet.Mode.LINEAR
+                    set.cubicIntensity = 0.2f
+                    set.setDrawFilled(true)
+                    set.setDrawCircles(false)
+                    set.lineWidth = 1.8f
+                    set.circleRadius = 4f
+                    set.setCircleColor(Color.WHITE)
+                    set.color = Color.WHITE
+                    set.fillColor = Color.WHITE
+                    set.fillAlpha = 0
+                    set.setDrawHorizontalHighlightIndicator(false)
 
+                    data.addDataSet(set)
+
+                }
                 data.addEntry(
                     Entry(set.entryCount.toFloat(), 0f),
                     0
                 )
             }
+
         }
+        graph2.invalidate()
     }
 
     private fun initGraph3() {
 
-        //Graph 1
-        graph3.setOnChartValueSelectedListener(this)
+        //graph 3
+        graph3.setViewPortOffsets(0f, 0f, 0f, 0f)
+        graph3.setBackgroundColor(Color.rgb(104, 241, 175))
 
-        // enable description text
+        // no description text
         graph3.description.isEnabled = false
 
         // enable touch gestures
-        graph3.setTouchEnabled(false)
+        graph3.setTouchEnabled(true)
 
         // enable scaling and dragging
         graph3.isDragEnabled = false
         graph3.setScaleEnabled(false)
-        graph3.setDrawGridBackground(false)
 
         // if disabled, scaling can be done on x- and y-axis separately
         graph3.setPinchZoom(false)
 
-        // set an alternative background color
-        graph3.setBackgroundColor(Color.LTGRAY)
+        graph3.setDrawGridBackground(false)
+        graph3.maxHighlightDistance = 300f
+
+        val x = graph3.xAxis
+        x.isEnabled = false
+
+        val y = graph3.axisLeft
+        y.typeface = tfLight
+        y.setLabelCount(6, false)
+        y.textColor = Color.WHITE
+        y.setPosition(YAxis.YAxisLabelPosition.INSIDE_CHART)
+        y.setDrawGridLines(false)
+        y.axisLineColor = Color.WHITE
+        y.axisMinimum = appDataProvider.getActVolMin()
+        y.axisMaximum = appDataProvider.getActVolMax()
+
+        // add data
+
+        // lower max, as cubic runs significantly slower than linear
+
+
+        graph3.legend.isEnabled = false
+
+        graph3.animateXY(2000, 2000)
+
+        // don't forget to refresh the drawing
+
 
         var data = LineData()
         data.setValueTextColor(Color.WHITE)
 
         // add empty data
         graph3.data = data
-        // get the legend (only possible after setting data)
-        val l = graph3.legend
-
-        // modify the legend ...
-        l.form = Legend.LegendForm.LINE
-        l.typeface = tfLight
-        l.textColor = Color.WHITE
-
-        val xl = graph3.xAxis
-        xl.typeface = tfLight
-        xl.textColor = Color.WHITE
-        xl.setDrawGridLines(false)
-        xl.setAvoidFirstLastClipping(true)
-        xl.isEnabled = true
-
-        val leftAxis = graph3.axisLeft
-        leftAxis.typeface = tfLight
-        leftAxis.textColor = Color.WHITE
-        leftAxis.axisMaximum = 30f
-        leftAxis.axisMinimum = 0f
-        leftAxis.setDrawGridLines(true)
-
-        val rightAxis = graph3.axisRight
-        rightAxis.isEnabled = false
 
         data = graph3.data
 
@@ -297,15 +356,29 @@ class GraphActivity : AppCompatActivity(), OnChartValueSelectedListener {
 
                 if (set == null) {
                     set = createSet()
-                    data.addDataSet(set)
-                }
+                    set.mode = LineDataSet.Mode.LINEAR
+                    set.cubicIntensity = 0.2f
+                    set.setDrawFilled(true)
+                    set.setDrawCircles(false)
+                    set.lineWidth = 1.8f
+                    set.circleRadius = 4f
+                    set.setCircleColor(Color.WHITE)
+                    set.color = Color.WHITE
+                    set.fillColor = Color.WHITE
+                    set.fillAlpha = 0
+                    set.setDrawHorizontalHighlightIndicator(false)
 
+                    data.addDataSet(set)
+
+                }
                 data.addEntry(
                     Entry(set.entryCount.toFloat(), 0f),
                     0
                 )
             }
+
         }
+        graph3.invalidate()
     }
 
     private fun addEntryForGraph1(value: Float) {

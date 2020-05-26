@@ -1,6 +1,7 @@
 package com.aafiyahtech.ventilator.utils
 
 import android.content.Context
+import com.aafiyahtech.ventilator.ui.activities.GraphActivity
 import com.aafiyahtech.ventilator.ui.fragments.SettingsFragment
 
 class AppDataProvider (context: Context) {
@@ -36,9 +37,18 @@ class AppDataProvider (context: Context) {
 
     fun getDataFetch(): Int = preferences.getInt("data_fetch",SettingsFragment.minDataFetchInterval)
 
-    fun getGraphUpdate(): Int = preferences.getInt("graph_update",SettingsFragment.minGraphUpdateInterval)
+    fun getGraphUpdate(): Int = preferences.getInt("graph_updates",SettingsFragment.minGraphUpdateInterval * 5)
 
     fun getGraphEntries(): Int = preferences.getInt("graph_entries",SettingsFragment.minGraphEntries)
+
+    fun getActPressureMin(): Float = preferences.getFloat("act_pres_min",GraphActivity.actPressureMin)
+    fun getActPressureMax(): Float = preferences.getFloat("act_pres_max",GraphActivity.actPressureMax)
+
+    fun getActFlowMin(): Float = preferences.getFloat("act_flow_min",GraphActivity.actFlowMin)
+    fun getActFlowMax(): Float = preferences.getFloat("act_flow_max",GraphActivity.actFlowMax)
+
+    fun getActVolMin(): Float = preferences.getFloat("act_vol_min",GraphActivity.actVolumeMin)
+    fun getActVolMax(): Float = preferences.getFloat("act_vol_max",GraphActivity.actVolumeMax)
 
 
     fun setDataFetch(value: Int) {
@@ -49,13 +59,49 @@ class AppDataProvider (context: Context) {
 
     fun setGraphUpdate(value: Int) {
         val editor = preferences.edit()
-        editor.putInt("graph_update", value)
+        editor.putInt("graph_updates", value)
         editor.apply()
     }
 
     fun setGraphEntries(value: Int) {
         val editor = preferences.edit()
         editor.putInt("graph_entries", value)
+        editor.apply()
+    }
+
+    fun setActPressureMim(value: Float) {
+        val editor = preferences.edit()
+        editor.putFloat("act_pres_min", value)
+        editor.apply()
+    }
+
+    fun setActPressureMax(value: Float) {
+        val editor = preferences.edit()
+        editor.putFloat("act_pres_max", value)
+        editor.apply()
+    }
+
+    fun setActFlowMim(value: Float) {
+        val editor = preferences.edit()
+        editor.putFloat("act_flow_min", value)
+        editor.apply()
+    }
+
+    fun setActFlowMax(value: Float) {
+        val editor = preferences.edit()
+        editor.putFloat("act_flow_max", value)
+        editor.apply()
+    }
+
+    fun setActVolMin(value: Float) {
+        val editor = preferences.edit()
+        editor.putFloat("act_vol_min", value)
+        editor.apply()
+    }
+
+    fun setActVolMax(value: Float) {
+        val editor = preferences.edit()
+        editor.putFloat("act_vol_max", value)
         editor.apply()
     }
 

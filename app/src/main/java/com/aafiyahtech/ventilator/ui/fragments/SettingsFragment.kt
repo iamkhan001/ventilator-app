@@ -9,21 +9,27 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.aafiyahtech.ventilator.R
+import com.aafiyahtech.ventilator.models.MessageEvent
 import com.aafiyahtech.ventilator.ui.activities.LinkActivity
+import com.aafiyahtech.ventilator.utils.ApiCaller
 import com.aafiyahtech.ventilator.utils.AppDataProvider
 import kotlinx.android.synthetic.main.fragment_settings.*
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 class SettingsFragment : Fragment(){
 
     companion object {
         const val minDataFetchInterval = 1
-        const val minGraphUpdateInterval = 1
-        const val minGraphEntries = 10
+        const val minGraphUpdateInterval = 10
+        const val minGraphEntries = 1
 
         const val maxDataFetchInterval = 15 - minDataFetchInterval
-        const val maxGraphUpdateInterval = 15 - minGraphUpdateInterval
-        const val maxGraphEntries = 30 - minGraphEntries
+        const val maxGraphUpdateInterval = 99
+        const val maxGraphEntries = 20 - minGraphEntries
 
         const val TAG = "Settings"
     }
@@ -49,10 +55,8 @@ class SettingsFragment : Fragment(){
         sbGraphInterval.max = maxGraphUpdateInterval
         sbGraphEntries.max = maxGraphEntries
 
-
-
         val dataFetch = appDataProvider.getDataFetch() - minDataFetchInterval
-        val graphUpdate = appDataProvider.getGraphUpdate() - minGraphUpdateInterval
+        val graphUpdate = appDataProvider.getGraphUpdate() / minGraphUpdateInterval
         val graphEntries = appDataProvider.getGraphEntries() - minGraphEntries
 
         sbDataFetchInterval.progress = dataFetch
@@ -64,8 +68,8 @@ class SettingsFragment : Fragment(){
 
 
         tvDataFetchInterval.text = "${appDataProvider.getDataFetch()} Seconds"
-        tvGraphUpdateInterval.text = "${appDataProvider.getGraphUpdate()} Seconds"
-        tvGraphEntries.text = "${appDataProvider.getGraphEntries()}"
+        tvGraphUpdateInterval.text = "${appDataProvider.getGraphUpdate()} ms"
+        tvGraphEntries.text = "${appDataProvider.getGraphEntries()} Seconds"
 
 
         imgBack.setOnClickListener { activity?.onBackPressed() }
@@ -96,7 +100,10 @@ class SettingsFragment : Fragment(){
         sbGraphInterval.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
 
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                tvGraphUpdateInterval.text = "${progress+ minGraphUpdateInterval} Seconds"
+
+                val p = (progress+1) * minGraphUpdateInterval
+
+                tvGraphUpdateInterval.text = "$p ms"
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
@@ -108,7 +115,8 @@ class SettingsFragment : Fragment(){
 
                 Log.d(TAG, "Graph Update: "+seekBar?.progress)
                 if (seekBar != null){
-                    appDataProvider.setGraphUpdate(seekBar.progress + minGraphUpdateInterval)
+                    val p = (seekBar.progress+1) * minGraphUpdateInterval
+                    appDataProvider.setGraphUpdate( p)
                 }
             }
 
@@ -117,7 +125,7 @@ class SettingsFragment : Fragment(){
         sbGraphEntries.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
 
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                tvGraphEntries.text = "${progress+ minGraphEntries}"
+                tvGraphEntries.text = "${progress+ minGraphEntries} Seconds"
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
@@ -137,6 +145,43 @@ class SettingsFragment : Fragment(){
         tvChange.setOnClickListener {
             startActivity(Intent(requireContext(), LinkActivity::class.java))
         }
+
+
+        setGraphRanges()
+
+        tvChangeRange.setOnClickListener {
+            val action = SettingsFragmentDirections.actionSettingsFragmentToGraphRangeFragment()
+            view.findNavController().navigate(action)
+        }
     }
+
+    private fun setGraphRanges(){
+
+        val text = "Actual Pressure: ${appDataProvider.getActPressureMin().toInt()} to ${appDataProvider.getActPressureMax().toInt()} \n"+
+                "Actual Volume: ${appDataProvider.getActVolMin().toInt()} to ${appDataProvider.getActVolMax().toInt()} \n"+
+                "Actual Flow: ${appDataProvider.getActFlowMin().toInt()} to ${appDataProvider.getActFlowMax().toInt()} \n"
+
+        tvGraphRange.text = text
+    }
+
+    override fun onStart() {
+        super.onStart()
+        EventBus.getDefault().register(this)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        EventBus.getDefault().unregister(this)
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onMessageEvent(event: MessageEvent) {
+
+        if(event == MessageEvent.UPDATE_CONFIG) {
+            Log.e(TAG,"ON BACK")
+            setGraphRanges()
+        }
+    }
+
 
 }

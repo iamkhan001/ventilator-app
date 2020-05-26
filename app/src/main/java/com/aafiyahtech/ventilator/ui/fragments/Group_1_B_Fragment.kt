@@ -38,6 +38,12 @@ class Group_1_B_Fragment : Fragment() {
     private val ventModes = arrayOf("PC-CMV", "PC-SIMV", "PC-PSV", "VC-CMV", "VC-SIMC", "PRVC", "CPAP", "BiPAP")
     private var ventMode = 0
 
+    private val terminationTypes = arrayOf("End Inspiration", "Tidal Volume", "Flow", "Time")
+    private var terminationType = 1
+
+    private val triggerTypes = arrayOf("Time", "Pressure", "Flow")
+    private var triggerType = 1
+
     private val onApiErrorListener = object : ApiCaller.OnApiResponseListener{
         override fun onError(msg: String) {
             activity?.runOnUiThread {
@@ -151,21 +157,6 @@ class Group_1_B_Fragment : Fragment() {
         mfInsEndTime.isErrorEnabled = false
         mfInsEndTime.error = null
 
-        val triggerType = try{
-            etTriggerType.text.toString().toIntOrNull()
-        }catch (e: Exception){
-            e.printStackTrace()
-            null
-        }
-
-        if (triggerType == null || triggerType !in triggerTypeMin..triggerTypeMax) {
-            mfTriggerType.isErrorEnabled = true
-            mfTriggerType.error = "Value must be in range"
-            return
-        }
-        mfTriggerType.isErrorEnabled = false
-        mfTriggerType.error = null
-
         val triggerTime = try{
             etTriggerTime.text.toString().toIntOrNull()
         }catch (e: Exception){
@@ -219,7 +210,8 @@ class Group_1_B_Fragment : Fragment() {
             triggerTime = triggerTime,
             triggerPressure = pressure,
             triggerFlow = triggerFlow,
-            ventMode = ventMode
+            ventMode = ventMode,
+            terminationType = terminationType
         )
 
         alertDialog = SweetAlertDialog(requireContext(), SweetAlertDialog.PROGRESS_TYPE)
@@ -254,13 +246,52 @@ class Group_1_B_Fragment : Fragment() {
 
         }
 
+        val ttAdapter = ArrayAdapter<String>(requireContext(), R.layout.item_text, terminationTypes)
+        spnTerType.adapter = ttAdapter
+
+        spnTerType.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                terminationType = 1
+            }
+
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                terminationType = position+1
+            }
+
+        }
+
+        val trtAdapter = ArrayAdapter<String>(requireContext(), R.layout.item_text, triggerTypes)
+        spnTriggerType.adapter = trtAdapter
+
+        spnTriggerType.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                triggerType = 1
+            }
+
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                triggerType = position+1
+            }
+
+        }
+
         tvRngRspRate.text = "Range $respiratoryRateMin to $respiratoryRateMax"
         tvRngInsTime.text = "Range $inspiratorTimeMin to $inspiratorTimeMax"
         tvRngInsEndTime.text = "Range $inspiratoryEndDelayMin to $inspiratoryEndDelayMax"
         tvRngTriggerFlow.text = "Range $triggerFlowMin to $triggerFlowMax"
         tvRngTriggerPressure.text = "Range $triggerPressureMin to $triggerPressureMax"
         tvRngTriggerTime.text = "Range $triggerTimeMin to $triggerTimeMax"
-        tvRngTriggerType.text = "Range $triggerTypeMin to $triggerTypeMax"
 
         tvDefRspRate.text = "Default $respiratoryRateDefault"
         tvDefInsTime.text = "Default $inspiratorTimeDefault"
@@ -268,7 +299,6 @@ class Group_1_B_Fragment : Fragment() {
         tvDefTriggerFlow.text = "Default $triggerFlowDefault"
         tvDefTriggerPressure.text = "Default $triggerPressureDefault"
         tvDefTriggerTime.text = "Default $triggerTimeDefault"
-        tvDefTriggerType.text = "Default $triggerTypeDefault"
 
         tvDefRspRate.setOnClickListener {
             mfRspRate.isErrorEnabled = false
@@ -294,10 +324,6 @@ class Group_1_B_Fragment : Fragment() {
             mfTriggerTime.isErrorEnabled = false
             etTriggerTime.setText("$triggerTimeDefault")
         }
-        tvDefTriggerType.setOnClickListener {
-            mfTriggerType.isErrorEnabled = false
-            etTriggerType.setText("$triggerTypeDefault")
-        }
 
     }
 
@@ -309,7 +335,6 @@ class Group_1_B_Fragment : Fragment() {
         etTriggerFlow.setText("${group.triggerFlow}")
         etTriggerPressure.setText("${group.triggerPressure}")
         etTriggerTime.setText("${group.triggerTime}")
-        etTriggerType.setText("${group.triggerType}")
         try {
             if(group.ventMode in 1..ventModeMax){
                 spnVentMode.setSelection(group.ventMode-1)
@@ -320,6 +345,25 @@ class Group_1_B_Fragment : Fragment() {
             spnVentMode.setSelection(0)
         }
 
+        try {
+            if(group.terminationType in 1..terminationTypeMax){
+                spnTerType.setSelection(group.terminationType-1)
+            }else {
+                MyMessage.showToast(requireContext(), "Invalid Termination Type Value")
+            }
+        }catch (e: Exception){
+            spnTerType.setSelection(0)
+        }
+
+        try {
+            if(group.triggerType in 1..triggerTypeMax){
+                spnTriggerType.setSelection(group.triggerType-1)
+            }else {
+                MyMessage.showToast(requireContext(), "Invalid Trigger Type Value")
+            }
+        }catch (e: Exception){
+            spnTriggerType.setSelection(0)
+        }
 
     }
 
