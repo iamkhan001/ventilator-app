@@ -1,6 +1,7 @@
 package com.aafiyahtech.ventilator.ui.fragments
 
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.aafiyahtech.ventilator.R
+import com.aafiyahtech.ventilator.config.*
 import com.aafiyahtech.ventilator.customViews.myDialog.SweetAlertDialog
 import com.aafiyahtech.ventilator.models.Group_3_B
 import com.aafiyahtech.ventilator.models.MessageEvent
@@ -55,8 +57,8 @@ class Group_3_B_Fragment : Fragment() {
         }
     }
 
-    companion object{
-        private const val TAG = "2A"
+    companion object {
+        private const val TAG = "3B"
     }
 
     override fun onCreateView(
@@ -76,6 +78,8 @@ class Group_3_B_Fragment : Fragment() {
             activity?.onBackPressed()
         }
 
+        initView()
+
         val group = model.mGroup3B
         group.observe(this, Observer {
             if (it != null ) {
@@ -91,6 +95,45 @@ class Group_3_B_Fragment : Fragment() {
 
         btnUpdate.setOnClickListener {
             validateAndUpdate()
+        }
+
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun initView(){
+
+        tvRngPlatePressure.text = "Range $minPlatePressure to $maxPlatePressure"
+        tvRngAcceleration.text = "Range $minAcceleration to $maxAcceleration"
+        tvRngInsOnDelay.text = "Range $minInsONDelay to $maxInsONDelay"
+        tvDefTPause.text = "Range $minTPause to $maxTPause"
+
+        tvDefPlatePressure.text = "Default $defPlatePressure"
+        tvDefAcceleration.text = "Default $defAcceleration"
+        tvDefInsOnDelay.text = "Default $defInsONDelay"
+        tvDefTPause.text = "Default $defTPause"
+
+        tvDefPlatePressure.setOnClickListener {
+            etPlatePressure.setText("$defPlatePressure")
+            mfPlatePressure.error = ""
+            mfPlatePressure.isErrorEnabled = false
+        }
+
+        tvDefAcceleration.setOnClickListener {
+            etAcceleration.setText("$defAcceleration")
+            mfAcceleration.error = ""
+            mfAcceleration.isErrorEnabled = false
+        }
+
+        tvDefInsOnDelay.setOnClickListener {
+            etInsOnDelay.setText("$defInsONDelay")
+            mfInsOnDelay.error = ""
+            mfInsOnDelay.isErrorEnabled = false
+        }
+
+        tvDefTPause.setOnClickListener {
+            etTPause.setText("$defTPause")
+            mfTPause.error = ""
+            mfTPause.isErrorEnabled = false
         }
 
     }
@@ -112,24 +155,28 @@ class Group_3_B_Fragment : Fragment() {
             null
         }
 
-        if (platePress == null){
+        if (platePress == null || platePress !in minPlatePressure..maxPlatePressure){
+            mfPlatePressure.isErrorEnabled = true
             mfPlatePressure.error = "Invalid Value"
             return
         }
         mfPlatePressure.error = ""
+        mfPlatePressure.isErrorEnabled = false
 
         val insON = try {
-            etInsOnDelay.text.toString().toFloatOrNull()
+            etInsOnDelay.text.toString().toIntOrNull()
         } catch (e: Exception) {
             e.printStackTrace()
             null
         }
 
-        if (insON == null) {
+        if (insON == null || insON !in minInsONDelay..maxInsONDelay) {
+            mfInsOnDelay.isErrorEnabled = true
             mfInsOnDelay.error = "Invalid Value"
             return
         }
         mfInsOnDelay.error = ""
+        mfInsOnDelay.isErrorEnabled = false
 
         val acceleration = try {
             etAcceleration.text.toString().toFloatOrNull()
@@ -138,24 +185,28 @@ class Group_3_B_Fragment : Fragment() {
             null
         }
 
-        if (acceleration == null) {
+        if (acceleration == null || acceleration !in minAcceleration..maxAcceleration) {
+            mfAcceleration.isErrorEnabled = true
             mfAcceleration.error = "Invalid value"
             return
         }
         mfAcceleration.error = ""
+        mfAcceleration.isErrorEnabled = false
 
         val tPause = try {
-            etTPause.text.toString().toFloatOrNull()
+            etTPause.text.toString().toIntOrNull()
         } catch (e: Exception) {
             e.printStackTrace()
             null
         }
 
-        if (tPause == null) {
+        if (tPause == null || tPause !in minTPause..maxTPause) {
+            mfTPause.isErrorEnabled = true
             mfTPause.error = "Invalid value"
             return
         }
         mfTPause.error = ""
+        mfTPause.isErrorEnabled = false
 
         val dummy1 = try {
             etDummy1.text.toString().toFloatOrNull()
@@ -187,7 +238,5 @@ class Group_3_B_Fragment : Fragment() {
 
         apiCaller.setDataGroup(ApiCaller.SET_GROUP_3_B, Gson().toJson(group))
     }
-
-
 
 }

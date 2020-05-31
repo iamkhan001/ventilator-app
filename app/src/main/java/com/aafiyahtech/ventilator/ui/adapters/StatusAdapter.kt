@@ -16,10 +16,20 @@ class StatusAdapter(private val list: ArrayList<VentilatorStatus>): RecyclerView
     }
 
     override fun getItemCount(): Int {
-        return list.size
+        return list.size + 1
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+
+        if(position == list.size) {
+
+            holder.tvName.text = ""
+            holder.tvUnit.text = ""
+            holder.tvValue.text = ""
+
+            return
+        }
+
 
         val item = list[position]
 

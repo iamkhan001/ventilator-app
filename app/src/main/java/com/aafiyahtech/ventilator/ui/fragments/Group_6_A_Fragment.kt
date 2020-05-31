@@ -144,7 +144,7 @@ class Group_6_A_Fragment : Fragment() {
         mfActVol.error = ""
 
         val refTime = try {
-            etRefTime.text.toString().toFloatOrNull()
+            etRefTime.text.toString().toLongOrNull()
         } catch (e: Exception) {
             e.printStackTrace()
             null

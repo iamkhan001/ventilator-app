@@ -56,7 +56,7 @@ const val triggerFlowMax = 5.0
 
 const val ventModeDefault = 1
 const val ventModeMin = 1
-const val ventModeMax = 8
+const val ventModeMax = 10
 
 
 /* group 2 a */
@@ -112,3 +112,37 @@ const val expiratoryEndDelayMax = 1000
 const val terminationTypeDefault = 1
 const val terminationTypeMin = 1
 const val terminationTypeMax = 4
+
+
+/* Group 3A */
+const val defGraphType = 0
+const val minGraphType = 0
+const val maxGraphType = 255
+
+const val defAppPollingRate = 100
+const val minAppPollingRate = 1
+const val maxAppPollingRate = 65535
+
+const val defGraphPollingRate = 40
+const val minGraphPollingRate = 1
+const val maxGraphPollingRate = 65535
+
+/* Group 3B */
+const val defPlatePressure= 20f
+const val minPlatePressure = 10f
+const val maxPlatePressure = 45f
+
+const val defAcceleration = 10000f
+const val minAcceleration = 100f
+const val maxAcceleration = 25000f
+
+const val defInsONDelay = 100
+const val minInsONDelay = 1
+const val maxInsONDelay = 1000
+
+const val defTPause = 100
+const val minTPause = 1
+const val maxTPause = 10000
+
+
+

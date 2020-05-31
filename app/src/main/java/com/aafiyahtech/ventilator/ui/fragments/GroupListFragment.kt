@@ -182,6 +182,10 @@ class GroupListFragment : Fragment() {
                         showGroup4AList(it)
                     }
                 })
+                val dly = (appDataProvider.getActTime()).toLong()
+                Log.e(TAG, "DELAY $dly")
+                apiCaller.delay = dly
+
                 tvTitle.text = "Group 4 A"
                 apiCaller.mGroup4a = mGroup
             }
@@ -295,9 +299,7 @@ class GroupListFragment : Fragment() {
         list.add(
             VentilatorStatus(getString(R.string.inspiratory_end_delay), "${item.inspiratoryEndDelay}", getString(R.string.unit_inspiratory_end_delay))
         )
-        list.add(
-            VentilatorStatus(getString(R.string.trigger_type), "${item.triggerType}", getString(R.string.unit_trigger_type))
-        )
+
         list.add(
             VentilatorStatus(getString(R.string.trigger_time), "${item.triggerTime}", getString(R.string.unit_trigger_time))
         )

@@ -66,7 +66,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etGraphType"
-                android:digits="1234567890."
+                android:digits="1234567890"
                 android:inputType="number"
                 android:background="@color/transparent"
                 android:layout_width="match_parent"
@@ -77,19 +77,18 @@
         <LinearLayout
             android:layout_marginStart="@dimen/space_normal"
             android:layout_marginEnd="@dimen/space_normal"
-            android:visibility="invisible"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/tvRngMntVnt"
+                android:id="@+id/tvRngGraphType"
                 android:text="Range 100 to 1000"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"/>
 
             <TextView
-                android:id="@+id/tvDefMntVnt"
+                android:id="@+id/tvDefGraphType"
                 android:textStyle="bold"
                 android:textSize="@dimen/text_default"
                 android:textColor="@color/blue"
@@ -119,7 +118,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etAppPollRate"
-                android:digits="1234567890."
+                android:digits="1234567890"
                 android:inputType="number"
                 android:background="@color/transparent"
                 android:layout_width="match_parent"
@@ -130,19 +129,18 @@
         <LinearLayout
             android:layout_marginStart="@dimen/space_normal"
             android:layout_marginEnd="@dimen/space_normal"
-            android:visibility="invisible"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/tvRngExpEndDly"
+                android:id="@+id/tvRngAppPollingRate"
                 android:text="Range 100 to 1000"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"/>
 
             <TextView
-                android:id="@+id/tvDefExpEndDly"
+                android:id="@+id/tvDefAppPollingRate"
                 android:textStyle="bold"
                 android:textSize="@dimen/text_default"
                 android:textColor="@color/blue"
@@ -173,7 +171,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etGraphPollRate"
-                android:digits="1234567890."
+                android:digits="1234567890"
                 android:inputType="number"
                 android:background="@color/transparent"
                 android:layout_width="match_parent"
@@ -184,19 +182,18 @@
         <LinearLayout
             android:layout_marginStart="@dimen/space_normal"
             android:layout_marginEnd="@dimen/space_normal"
-            android:visibility="invisible"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/tvRngTerminationType"
+                android:id="@+id/tvRngGraphPollingRate"
                 android:text="Range 100 to 1000"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"/>
 
             <TextView
-                android:id="@+id/tvDefTerminationType"
+                android:id="@+id/tvDefGraphPollingRate"
                 android:textStyle="bold"
                 android:textSize="@dimen/text_default"
                 android:textColor="@color/blue"

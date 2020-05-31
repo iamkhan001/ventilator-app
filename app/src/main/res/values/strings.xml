@@ -123,14 +123,14 @@
     <string name="unit_app_polling_rate">sec</string>
 
     <!-- GROUP 3 B -->
-    <string name="plate_pressure">Plate Pressure</string>
+    <string name="plate_pressure">Plateau Pressure</string>
     <string name="acceleration">Acceleration</string>
     <string name="inspiratory_on_delay">Inspiratory ON Delay</string>
     <string name="t_pause">T-Pause</string>
     <string name="dummy1">Dummy 1</string>
 
     <string name="unit_plate_pressure">cm of H2O</string>
-    <string name="unit_acceleration">m/s2</string>
+    <string name="unit_acceleration">m/S² </string>
     <string name="unit_inspiratory_on_delay">sec</string>
     <string name="unit_t_pause"> </string>
     <string name="unit_dummy1"> </string>
@@ -159,8 +159,8 @@
     <string name="expiration_velocity">Expiration Velocity</string>
     <string name="breath_time">Breath Time</string>
 
-    <string name="unit_inspiration_velocity">m/sy</string>
-    <string name="unit_expiration_velocity">m/s</string>
+    <string name="unit_inspiration_velocity">mm/s</string>
+    <string name="unit_expiration_velocity">mm/s</string>
     <string name="unit_breath_time"> </string>
 
     <!-- GROUP 6 A -->
@@ -199,5 +199,6 @@
     <string name="change_range">Click here to change range</string>
     <string name="min">min</string>
     <string name="max">max</string>
+    <string name="actual_time">Actual Time</string>
 
 </resources>

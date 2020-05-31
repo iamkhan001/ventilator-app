@@ -22,6 +22,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:orientation="horizontal"
                 android:gravity="center_vertical">
 
                 <ImageView
@@ -38,9 +39,22 @@
                     android:text="@string/app_name"
                     android:textColor="@color/white"
                     android:padding="@dimen/space_normal"
-                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"/>
 
+<!--                <TextView-->
+<!--                    android:id="@+id/fabEdit"-->
+<!--                    android:text="Edit"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:drawableEnd="@drawable/ic_edit"-->
+<!--                    android:drawablePadding="@dimen/space_small"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:gravity="center_vertical"-->
+<!--                    android:textSize="@dimen/text_normal"-->
+<!--                    android:layout_marginEnd="@dimen/space_large"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="match_parent"/>-->
 
             </LinearLayout>
 
@@ -53,15 +67,16 @@
         android:id="@+id/rvList"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
         tools:listitem="@layout/item_state"
+        tools:itemCount="20"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabEdit"
         android:layout_margin="@dimen/space_large"
         android:layout_gravity="bottom|end"
-        android:src="@android:drawable/ic_menu_edit"
+        android:src="@drawable/ic_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 

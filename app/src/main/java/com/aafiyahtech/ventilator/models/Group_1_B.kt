@@ -25,6 +25,8 @@ data class Group_1_B(
             6-> "PRVC"
             7-> "CPAP"
             8-> "BiPAP"
+            9-> "Ventbox1"
+            10-> "Ventbox2"
             else -> "$ventMode"
         }
 

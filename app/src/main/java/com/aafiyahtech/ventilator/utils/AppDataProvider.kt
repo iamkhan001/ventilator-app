@@ -37,6 +37,8 @@ class AppDataProvider (context: Context) {
 
     fun getDataFetch(): Int = preferences.getInt("data_fetch",SettingsFragment.minDataFetchInterval)
 
+    fun getActTime(): Int = preferences.getInt("act_time",SettingsFragment.defActTimeInterval)
+
     fun getGraphUpdate(): Int = preferences.getInt("graph_updates",SettingsFragment.minGraphUpdateInterval * 5)
 
     fun getGraphEntries(): Int = preferences.getInt("graph_entries",SettingsFragment.minGraphEntries)
@@ -54,6 +56,12 @@ class AppDataProvider (context: Context) {
     fun setDataFetch(value: Int) {
         val editor = preferences.edit()
         editor.putInt("data_fetch", value)
+        editor.apply()
+    }
+
+    fun setActTime(value: Int) {
+        val editor = preferences.edit()
+        editor.putInt("act_time", value)
         editor.apply()
     }
 

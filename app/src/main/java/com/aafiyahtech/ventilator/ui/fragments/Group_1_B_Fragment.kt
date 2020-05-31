@@ -35,7 +35,7 @@ class Group_1_B_Fragment : Fragment() {
     private lateinit var apiCaller: ApiCaller
     private var alertDialog: SweetAlertDialog? = null
 
-    private val ventModes = arrayOf("PC-CMV", "PC-SIMV", "PC-PSV", "VC-CMV", "VC-SIMC", "PRVC", "CPAP", "BiPAP")
+    private val ventModes = arrayOf("PC-CMV", "PC-SIMV", "PC-PSV", "VC-CMV", "VC-SIMC", "PRVC", "CPAP", "BiPAP", "Ventbox1", "Ventbox2")
     private var ventMode = 0
 
     private val terminationTypes = arrayOf("End Inspiration", "Tidal Volume", "Flow", "Time")

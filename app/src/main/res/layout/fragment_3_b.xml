@@ -74,6 +74,35 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <LinearLayout
+            android:layout_marginStart="@dimen/space_normal"
+            android:layout_marginEnd="@dimen/space_normal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvRngPlatePressure"
+                android:text="Range 100 to 1000"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/tvDefPlatePressure"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_default"
+                android:textColor="@color/blue"
+                android:drawableEnd="@drawable/ic_loop"
+                android:text="Default 100"
+                android:drawablePadding="@dimen/space_small"
+                android:gravity="end"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/mfAcceleration"
             android:layout_width="match_parent"
@@ -97,6 +126,35 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <LinearLayout
+            android:layout_marginStart="@dimen/space_normal"
+            android:layout_marginEnd="@dimen/space_normal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvRngAcceleration"
+                android:text="Range 100 to 1000"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/tvDefAcceleration"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_default"
+                android:textColor="@color/blue"
+                android:drawableEnd="@drawable/ic_loop"
+                android:text="Default 100"
+                android:drawablePadding="@dimen/space_small"
+                android:gravity="end"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/mfInsOnDelay"
             android:layout_width="match_parent"
@@ -112,13 +170,42 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etInsOnDelay"
-                android:digits="1234567890."
+                android:digits="1234567890"
                 android:inputType="number"
                 android:background="@color/transparent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_marginStart="@dimen/space_normal"
+            android:layout_marginEnd="@dimen/space_normal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvRngInsOnDelay"
+                android:text="Range 100 to 1000"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/tvDefInsOnDelay"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_default"
+                android:textColor="@color/blue"
+                android:drawableEnd="@drawable/ic_loop"
+                android:text="Default 100"
+                android:drawablePadding="@dimen/space_small"
+                android:gravity="end"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/mfTPause"
@@ -126,13 +213,16 @@
             android:layout_height="wrap_content"
             android:background="@drawable/bg_border"
             android:padding="@dimen/space_normal"
-            android:layout_margin="@dimen/space_normal"
+            android:layout_marginStart="@dimen/space_normal"
+            android:layout_marginEnd="@dimen/space_normal"
+            android:layout_marginTop="@dimen/space_large"
+            android:layout_marginBottom="@dimen/space_normal"
             android:hint="@string/t_pause"
             app:boxBackgroundColor="#20D81B60">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etTPause"
-                android:digits="1234567890."
+                android:digits="1234567890"
                 android:inputType="number"
                 android:background="@color/transparent"
                 android:layout_width="match_parent"
@@ -140,13 +230,45 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <LinearLayout
+            android:layout_marginStart="@dimen/space_normal"
+            android:layout_marginEnd="@dimen/space_normal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvRngTPause"
+                android:text="Range 100 to 1000"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/tvDefTPause"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_default"
+                android:textColor="@color/blue"
+                android:drawableEnd="@drawable/ic_loop"
+                android:text="Default 100"
+                android:drawablePadding="@dimen/space_small"
+                android:gravity="end"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/mfDummy1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_border"
             android:padding="@dimen/space_normal"
-            android:layout_margin="@dimen/space_normal"
+            android:layout_marginStart="@dimen/space_normal"
+            android:layout_marginEnd="@dimen/space_normal"
+            android:layout_marginTop="@dimen/space_large"
+            android:layout_marginBottom="@dimen/space_normal"
             android:hint="@string/dummy1"
             app:boxBackgroundColor="#20D81B60">
 

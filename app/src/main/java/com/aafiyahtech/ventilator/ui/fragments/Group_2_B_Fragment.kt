@@ -62,7 +62,7 @@ class Group_2_B_Fragment : Fragment() {
     }
 
     companion object{
-        private const val TAG = "2A"
+        private const val TAG = "2B"
     }
 
     override fun onCreateView(

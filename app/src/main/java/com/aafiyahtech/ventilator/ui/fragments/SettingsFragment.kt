@@ -25,7 +25,10 @@ class SettingsFragment : Fragment(){
     companion object {
         const val minDataFetchInterval = 1
         const val minGraphUpdateInterval = 10
+        const val minActTime = 10
         const val minGraphEntries = 1
+
+        const val defActTimeInterval = 100
 
         const val maxDataFetchInterval = 15 - minDataFetchInterval
         const val maxGraphUpdateInterval = 99
@@ -56,19 +59,21 @@ class SettingsFragment : Fragment(){
         sbGraphEntries.max = maxGraphEntries
 
         val dataFetch = appDataProvider.getDataFetch() - minDataFetchInterval
+        val actTime = appDataProvider.getActTime() / minActTime
         val graphUpdate = appDataProvider.getGraphUpdate() / minGraphUpdateInterval
         val graphEntries = appDataProvider.getGraphEntries() - minGraphEntries
 
         sbDataFetchInterval.progress = dataFetch
         sbGraphInterval.progress = graphUpdate
         sbGraphEntries.progress = graphEntries
+        sbActualTimeInterval.progress = actTime
 
         val ip = appDataProvider.getIp()
         tvIp.text = ip
 
-
         tvDataFetchInterval.text = "${appDataProvider.getDataFetch()} Seconds"
         tvGraphUpdateInterval.text = "${appDataProvider.getGraphUpdate()} ms"
+        tvActualTimeInterval.text = "${appDataProvider.getActTime()} ms"
         tvGraphEntries.text = "${appDataProvider.getGraphEntries()} Seconds"
 
 
@@ -117,6 +122,31 @@ class SettingsFragment : Fragment(){
                 if (seekBar != null){
                     val p = (seekBar.progress+1) * minGraphUpdateInterval
                     appDataProvider.setGraphUpdate( p)
+                }
+            }
+
+        })
+
+        sbActualTimeInterval.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
+
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+
+                val p = (progress+1) * minActTime
+
+                tvActualTimeInterval.text = "$p ms"
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+
+
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+
+                Log.d(TAG, "Act Time: "+seekBar?.progress)
+                if (seekBar != null){
+                    val p = (seekBar.progress+1) * minActTime
+                    appDataProvider.setActTime( p)
                 }
             }
 

@@ -12,6 +12,7 @@ import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
 
 class ApiCaller (private val type: String, apiUrl: String): Runnable {
 
@@ -40,6 +41,7 @@ class ApiCaller (private val type: String, apiUrl: String): Runnable {
         const val SET_GROUP_5_B = "set_group_5_b"
         const val SET_GROUP_6_A = "set_group_6_a"
 
+        var timeDiff = 0L
     }
 
     private var call: Call<ResponseBody>? = null
@@ -646,7 +648,7 @@ class ApiCaller (private val type: String, apiUrl: String): Runnable {
     }
 
     private fun loadDataGroup6a() {
-
+        val start = Date().time
         call = apiClient.getGroup1A(GET_GROUP_6_A)
         call?.enqueue(
             object : Callback<ResponseBody> {
@@ -663,6 +665,7 @@ class ApiCaller (private val type: String, apiUrl: String): Runnable {
                             if (r.getBoolean("success")) {
                                 val group: Group_6_A? = Gson().fromJson(r.getJSONObject("data").toString(), Group_6_A::class.java)
                                 if (group != null) {
+                                    timeDiff = Date().time - start
                                     mGroup6a?.postValue(group)
 
                                     if (isRecursive){
