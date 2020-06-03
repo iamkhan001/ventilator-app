@@ -170,7 +170,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etInsOnDelay"
-                android:digits="1234567890"
+                android:digits="1234567890."
                 android:inputType="number"
                 android:background="@color/transparent"
                 android:layout_width="match_parent"
@@ -222,7 +222,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etTPause"
-                android:digits="1234567890"
+                android:digits="1234567890."
                 android:inputType="number"
                 android:background="@color/transparent"
                 android:layout_width="match_parent"

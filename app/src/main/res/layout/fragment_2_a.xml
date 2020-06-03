@@ -200,7 +200,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etMinPressure"
-                        android:digits="1234567890."
+                        android:digits="1234567890"
                         android:inputType="number"
                         android:background="@color/transparent"
                         android:layout_width="match_parent"
@@ -304,7 +304,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etMinAf"
-                        android:digits="1234567890"
+                        android:digits="1234567890."
                         android:inputType="number"
                         android:background="@color/transparent"
                         android:layout_width="match_parent"
@@ -356,7 +356,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etMaxAf"
-                        android:digits="1234567890"
+                        android:digits="1234567890."
                         android:inputType="number"
                         android:background="@color/transparent"
                         android:layout_width="match_parent"
@@ -409,7 +409,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etMinVol"
-                        android:digits="1234567890"
+                        android:digits="1234567890."
                         android:inputType="number"
                         android:background="@color/transparent"
                         android:layout_width="match_parent"
@@ -462,7 +462,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etMaxVol"
-                        android:digits="1234567890"
+                        android:digits="1234567890."
                         android:inputType="number"
                         android:background="@color/transparent"
                         android:layout_width="match_parent"

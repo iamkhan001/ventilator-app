@@ -2,24 +2,24 @@ package com.aafiyahtech.ventilator.config
 
 /* group 1 a */
 const val tidalVolumeDefault = 600
-const val tidalVolumeMin = 100
-const val tidalVolumeMax = 1950
+const val tidalVolumeMin = 100f
+const val tidalVolumeMax = 1950f
 
 const val peakVolumeDefault = 800
-const val peakVolumeMin = 100
-const val peakVolumeMax = 1950
+const val peakVolumeMin = 100f
+const val peakVolumeMax = 1950f
 
 const val pipDefault = 0
-const val pipMin = 0
-const val pipMax = 45
+const val pipMin = 0f
+const val pipMax = 45f
 
 const val peepDefault = 10
 const val peepMin = 0
 const val peepMax = 45
 
 const val pressureSupportDefault = 10
-const val pressureSupportMin = 8
-const val pressureSupportMax = 45
+const val pressureSupportMin = 8f
+const val pressureSupportMax = 45f
 
 const val oxygenRateDefault = 50
 const val oxygenRateMin = 21
@@ -30,21 +30,21 @@ const val respiratoryRateDefault = 12
 const val respiratoryRateMin = 5
 const val respiratoryRateMax = 60
 
-const val inspiratorTimeDefault = 1000
-const val inspiratorTimeMin = 200
-const val inspiratorTimeMax = 10000
+const val inspiratorTimeDefault = 1
+const val inspiratorTimeMin = 0.2
+const val inspiratorTimeMax = 10.0
 
-const val inspiratoryEndDelayDefault = 100
-const val inspiratoryEndDelayMin = 1
-const val inspiratoryEndDelayMax = 10000
+const val inspiratoryEndDelayDefault = 0.1
+const val inspiratoryEndDelayMin = 0.001
+const val inspiratoryEndDelayMax = 10.0
 
 const val triggerTypeDefault = 1
 const val triggerTypeMin = 1
 const val triggerTypeMax = 3
 
-const val triggerTimeDefault = 100
-const val triggerTimeMin = 1
-const val triggerTimeMax = 65535
+const val triggerTimeDefault = 0.1
+const val triggerTimeMin = 0.001
+const val triggerTimeMax = 65.535
 
 const val triggerPressureDefault = 1
 const val triggerPressureMin = -0.5
@@ -61,12 +61,12 @@ const val ventModeMax = 10
 
 /* group 2 a */
 const val inspirationValueDefault = 1
-const val inspirationValueMin = 1
-const val inspirationValueMax = 4
+const val inspirationValueMin = 1f
+const val inspirationValueMax = 4f
 
 const val expirationValueDefault = 2
-const val expirationValueMin = 1
-const val expirationValueMax = 4
+const val expirationValueMin = 1f
+const val expirationValueMax = 4f
 
 const val minPressureDefault = 5
 const val minPressureMin = 5
@@ -81,16 +81,16 @@ const val minAirFlowMin = 0.1
 const val minAirFlowMax = 1.0
 
 const val maxAirFlowDefault = 50
-const val maxAirFlowMin = 5
-const val maxAirFlowMax = 100
+const val maxAirFlowMin = 5f
+const val maxAirFlowMax = 100f
 
 const val minVolumeDefault = 150
-const val minVolumeMin = 0
-const val minVolumeMax = 200
+const val minVolumeMin = 0f
+const val minVolumeMax = 200f
 
 const val maxVolumeDefault = 1000
-const val maxVolumeMin = 800
-const val maxVolumeMax = 2000
+const val maxVolumeMin = 800f
+const val maxVolumeMax = 2000f
 
 const val minOxygenDefault = 20
 const val minOxygenMin = 0
@@ -102,12 +102,12 @@ const val maxOxygenMax = 100
 
 /* group 2 b */
 const val minuteVentilationDefault = 10
-const val minuteVentilationMin = 1
-const val minuteVentilationMax = 30
+const val minuteVentilationMin = 1f
+const val minuteVentilationMax = 30f
 
-const val expiratoryEndDelayDefault = 100
-const val expiratoryEndDelayMin = 1
-const val expiratoryEndDelayMax = 1000
+const val expiratoryEndDelayDefault = 0.1
+const val expiratoryEndDelayMin = 0.001
+const val expiratoryEndDelayMax = 0.1
 
 const val terminationTypeDefault = 1
 const val terminationTypeMin = 1
@@ -119,13 +119,13 @@ const val defGraphType = 0
 const val minGraphType = 0
 const val maxGraphType = 255
 
-const val defAppPollingRate = 100
-const val minAppPollingRate = 1
-const val maxAppPollingRate = 65535
+const val defAppPollingRate = 0.1
+const val minAppPollingRate = 0.001
+const val maxAppPollingRate = 65.535
 
-const val defGraphPollingRate = 40
-const val minGraphPollingRate = 1
-const val maxGraphPollingRate = 65535
+const val defGraphPollingRate = 0.04
+const val minGraphPollingRate = 0.001
+const val maxGraphPollingRate = 65.535
 
 /* Group 3B */
 const val defPlatePressure= 20f
@@ -136,13 +136,13 @@ const val defAcceleration = 10000f
 const val minAcceleration = 100f
 const val maxAcceleration = 25000f
 
-const val defInsONDelay = 100
-const val minInsONDelay = 1
-const val maxInsONDelay = 1000
+const val defInsONDelay = 0.1
+const val minInsONDelay = 0.001
+const val maxInsONDelay = 1.0
 
-const val defTPause = 100
-const val minTPause = 1
-const val maxTPause = 10000
+const val defTPause = 0.1
+const val minTPause = 0.001
+const val maxTPause = 10.0
 
 
 

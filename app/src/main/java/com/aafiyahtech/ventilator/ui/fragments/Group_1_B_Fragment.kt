@@ -20,6 +20,7 @@ import com.aafiyahtech.ventilator.models.MessageEvent
 import com.aafiyahtech.ventilator.ui.viewModels.MainViewModel
 import com.aafiyahtech.ventilator.utils.ApiCaller
 import com.aafiyahtech.ventilator.utils.MyMessage
+import com.aafiyahtech.ventilator.utils.NumberUtils
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_1_b.*
 import org.greenrobot.eventbus.EventBus
@@ -127,8 +128,8 @@ class Group_1_B_Fragment : Fragment() {
         mfRspRate.error = null
         mfRspRate.isErrorEnabled = false
 
-        val insTime = try{
-            etInsTime.text.toString().toIntOrNull()
+        var insTime = try{
+            etInsTime.text.toString().toFloatOrNull()
         }catch (e: Exception){
             e.printStackTrace()
             null
@@ -142,8 +143,8 @@ class Group_1_B_Fragment : Fragment() {
         mfInsTime.isErrorEnabled = false
         mfInsTime.error = null
 
-        val endTime = try{
-            etInsEndTime.text.toString().toIntOrNull()
+        var endTime = try{
+            etInsEndTime.text.toString().toFloatOrNull()
         }catch (e: Exception){
             e.printStackTrace()
             null
@@ -157,8 +158,8 @@ class Group_1_B_Fragment : Fragment() {
         mfInsEndTime.isErrorEnabled = false
         mfInsEndTime.error = null
 
-        val triggerTime = try{
-            etTriggerTime.text.toString().toIntOrNull()
+        var triggerTime = try{
+            etTriggerTime.text.toString().toFloatOrNull()
         }catch (e: Exception){
             e.printStackTrace()
             null
@@ -201,13 +202,16 @@ class Group_1_B_Fragment : Fragment() {
         mfTriggerFlow.isErrorEnabled = false
         mfTriggerFlow.error = null
 
+        insTime *= 1000
+        endTime *= 1000
+        triggerTime *= 1000
 
         val g1b = Group_1_B(
             respiratoryRate = rspRate,
-            inspiratorTime = insTime,
-            inspiratoryEndDelay = endTime,
+            inspiratorTime = insTime.toInt(),
+            inspiratoryEndDelay = endTime.toInt(),
             triggerType = triggerType,
-            triggerTime = triggerTime,
+            triggerTime = triggerTime.toInt(),
             triggerPressure = pressure,
             triggerFlow = triggerFlow,
             ventMode = ventMode,
@@ -330,11 +334,11 @@ class Group_1_B_Fragment : Fragment() {
     private fun setDetails(group: Group_1_B) {
 
         etRspRate.setText("${group.respiratoryRate}")
-        etInsTime.setText("${group.inspiratorTime}")
-        etInsEndTime.setText("${group.inspiratoryEndDelay}")
+        etInsTime.setText("${NumberUtils.toSeconds(group.inspiratorTime)}")
+        etInsEndTime.setText("${NumberUtils.toSeconds(group.inspiratoryEndDelay)}")
         etTriggerFlow.setText("${group.triggerFlow}")
         etTriggerPressure.setText("${group.triggerPressure}")
-        etTriggerTime.setText("${group.triggerTime}")
+        etTriggerTime.setText("${NumberUtils.toSeconds(group.triggerTime)}")
         try {
             if(group.ventMode in 1..ventModeMax){
                 spnVentMode.setSelection(group.ventMode-1)
@@ -346,7 +350,7 @@ class Group_1_B_Fragment : Fragment() {
         }
 
         try {
-            if(group.terminationType in 1..terminationTypeMax){
+            if(group.terminationType in terminationTypeMin..terminationTypeMax){
                 spnTerType.setSelection(group.terminationType-1)
             }else {
                 MyMessage.showToast(requireContext(), "Invalid Termination Type Value")
@@ -356,7 +360,7 @@ class Group_1_B_Fragment : Fragment() {
         }
 
         try {
-            if(group.triggerType in 1..triggerTypeMax){
+            if(group.triggerType in triggerTypeMin..triggerTypeMax){
                 spnTriggerType.setSelection(group.triggerType-1)
             }else {
                 MyMessage.showToast(requireContext(), "Invalid Trigger Type Value")

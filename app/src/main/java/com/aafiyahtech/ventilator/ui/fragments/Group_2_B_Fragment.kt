@@ -20,6 +20,7 @@ import com.aafiyahtech.ventilator.models.MessageEvent
 import com.aafiyahtech.ventilator.ui.viewModels.MainViewModel
 import com.aafiyahtech.ventilator.utils.ApiCaller
 import com.aafiyahtech.ventilator.utils.MyMessage
+import com.aafiyahtech.ventilator.utils.NumberUtils
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_2_b.*
 import org.greenrobot.eventbus.EventBus
@@ -104,7 +105,7 @@ class Group_2_B_Fragment : Fragment() {
 
     private fun setDetails(group: Group_2_B) {
         etMntVnt.setText("${group.minuteVentilation}")
-        etExpEndDly.setText("${group.expiratoryEndDelay}")
+        etExpEndDly.setText("${NumberUtils.toSeconds(group.expiratoryEndDelay)}")
 
     }
 
@@ -125,8 +126,8 @@ class Group_2_B_Fragment : Fragment() {
         mfMntVnt.error = null
         mfMntVnt.isErrorEnabled = false
 
-        val expEnd = try {
-            etExpEndDly.text.toString().toIntOrNull()
+        var expEnd = try {
+            etExpEndDly.text.toString().toFloatOrNull()
         } catch (e: Exception) {
             e.printStackTrace()
             null
@@ -140,10 +141,10 @@ class Group_2_B_Fragment : Fragment() {
         mfExpEndDly.isErrorEnabled = false
         mfExpEndDly.error = null
 
-
+        expEnd *= 1000
         val g2a = Group_2_B(
             minuteVentilation = minVent,
-            expiratoryEndDelay = expEnd
+            expiratoryEndDelay = expEnd.toInt()
         )
 
         alertDialog = SweetAlertDialog(requireContext(), SweetAlertDialog.PROGRESS_TYPE)

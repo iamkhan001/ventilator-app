@@ -87,7 +87,7 @@
     <string name="unit_vent_mode"> </string>
     <string name="unit_trigger_flow">lpm</string>
     <string name="unit_trigger_pressure">cm of H2O</string>
-    <string name="unit_trigger_time">msec</string>
+    <string name="unit_trigger_time">sec</string>
     <string name="unit_trigger_type"> </string>
     <string name="unit_inspiratory_end_delay">sec</string>
     <string name="unit_inspirator_time">sec</string>
@@ -130,9 +130,9 @@
     <string name="dummy1">Dummy 1</string>
 
     <string name="unit_plate_pressure">cm of H2O</string>
-    <string name="unit_acceleration">m/S² </string>
+    <string name="unit_acceleration">mm/S² </string>
     <string name="unit_inspiratory_on_delay">sec</string>
-    <string name="unit_t_pause"> </string>
+    <string name="unit_t_pause">sec</string>
     <string name="unit_dummy1"> </string>
 
     <!-- GROUP 4 A -->
@@ -152,7 +152,7 @@
     <string name="unit_inspiratory_flow_sensor">lpm</string>
     <string name="unit_actual_breath_time">sec</string>
     <string name="unit_actual_inspiratory_time">sec</string>
-    <string name="unit_actual_expiratory_time"> </string>
+    <string name="unit_actual_expiratory_time">sec</string>
 
     <!-- GROUP 5 B -->
     <string name="inspiration_velocity">Inspiration Velocity</string>
@@ -161,7 +161,7 @@
 
     <string name="unit_inspiration_velocity">mm/s</string>
     <string name="unit_expiration_velocity">mm/s</string>
-    <string name="unit_breath_time"> </string>
+    <string name="unit_breath_time">sec</string>
 
     <!-- GROUP 6 A -->
     <string name="actual_flow">Actual Flow</string>

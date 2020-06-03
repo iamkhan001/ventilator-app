@@ -26,7 +26,7 @@ class Group_3_C_Fragment : Fragment() {
     private var alertDialog: SweetAlertDialog? = null
 
     private var checkBtn: CompoundButton? = null
-    private var update = true
+    private var update = false
     private val onApiErrorListener = object : ApiCaller.OnApiResponseListener{
         override fun onError(msg: String) {
             activity?.runOnUiThread {
@@ -92,22 +92,42 @@ class Group_3_C_Fragment : Fragment() {
                     if (!update){
                         return@setOnCheckedChangeListener
                     }
-                    checkBtn = buttonView
 
-                    val status = if (isChecked) {
-                        1
-                    } else {
-                        0
+                    val alertDialog = SweetAlertDialog(context, SweetAlertDialog.NORMAL_TYPE)
+                    alertDialog.titleText = "Cycle Start"
+                    alertDialog.contentText = "Do you want to update configuration?"
+                    alertDialog.confirmText = "Yes"
+                    alertDialog.cancelText = "No"
+                    alertDialog.setConfirmClickListener {
+                        alertDialog.dismissWithAnimation()
+                        checkBtn = buttonView
+
+                        val status = if (isChecked) {
+                            1
+                        } else {
+                            0
+                        }
+                        val obj = JSONObject()
+                        obj.put("CycleStart", status)
+                        obj.put("Homing", 0)
+                        obj.put("Reset", 0)
+                        obj.put("FactoryReset", 0)
+                        obj.put("Dummy3", 0)
+                        obj.put("BuzzerOff", 0)
+
+                        apiCaller.setDataGroup(ApiCaller.SET_GROUP_3_C, obj.toString())
+
                     }
-                    val obj = JSONObject()
-                    obj.put("CycleStart", status)
-                    obj.put("Homing", 0)
-                    obj.put("Dummy1", 0)
-                    obj.put("Dummy2", 0)
-                    obj.put("Dummy3", 0)
-                    obj.put("BuzzerOff", 0)
+                    alertDialog.setCancelClickListener {
+                        update = false
+                        buttonView.isChecked = !isChecked
+                        it.dismissWithAnimation()
+                        update = true
+                    }
+                    alertDialog.show()
 
-                    apiCaller.setDataGroup(ApiCaller.SET_GROUP_3_C, obj.toString())
+
+
 
                 }
             }
@@ -117,22 +137,39 @@ class Group_3_C_Fragment : Fragment() {
                     if (!update){
                         return@setOnCheckedChangeListener
                     }
-                    checkBtn = buttonView
 
-                    val status = if (isChecked) {
-                        1
-                    } else {
-                        0
+                    val alertDialog = SweetAlertDialog(context, SweetAlertDialog.NORMAL_TYPE)
+                    alertDialog.titleText = "Homing"
+                    alertDialog.contentText = "Do you want to update configuration?"
+                    alertDialog.confirmText = "Yes"
+                    alertDialog.cancelText = "No"
+                    alertDialog.setConfirmClickListener {
+                        alertDialog.dismissWithAnimation()
+                        checkBtn = buttonView
+
+                        val status = if (isChecked) {
+                            1
+                        } else {
+                            0
+                        }
+                        val obj = JSONObject()
+                        obj.put("CycleStart", 0)
+                        obj.put("Homing", status)
+                        obj.put("Reset", 0)
+                        obj.put("FactoryReset", 0)
+                        obj.put("Dummy3", 0)
+                        obj.put("BuzzerOff", 0)
+
+                        apiCaller.setDataGroup(ApiCaller.SET_GROUP_3_C, obj.toString())
                     }
-                    val obj = JSONObject()
-                    obj.put("CycleStart", 0)
-                    obj.put("Homing", status)
-                    obj.put("Dummy1", 0)
-                    obj.put("Dummy2", 0)
-                    obj.put("Dummy3", 0)
-                    obj.put("BuzzerOff", 0)
+                    alertDialog.setCancelClickListener {
+                        update = false
+                        buttonView.isChecked = !isChecked
+                        it.dismissWithAnimation()
+                        update = true
+                    }
+                    alertDialog.show()
 
-                    apiCaller.setDataGroup(ApiCaller.SET_GROUP_3_C, obj.toString())
                 }
 
 
@@ -143,22 +180,39 @@ class Group_3_C_Fragment : Fragment() {
                     if (!update){
                         return@setOnCheckedChangeListener
                     }
-                    checkBtn = buttonView
 
-                    val status = if (isChecked) {
-                        1
-                    } else {
-                        0
+                    val alertDialog = SweetAlertDialog(context, SweetAlertDialog.NORMAL_TYPE)
+                    alertDialog.titleText = "Factory Reset"
+                    alertDialog.contentText = "Do you want to update configuration?"
+                    alertDialog.confirmText = "Yes"
+                    alertDialog.cancelText = "No"
+                    alertDialog.setConfirmClickListener {
+                        alertDialog.dismissWithAnimation()
+                        checkBtn = buttonView
+
+                        val status = if (isChecked) {
+                            1
+                        } else {
+                            0
+                        }
+                        val obj = JSONObject()
+                        obj.put("CycleStart", 0)
+                        obj.put("Homing", 0)
+                        obj.put("Reset", status)
+                        obj.put("FactoryReset", 0)
+                        obj.put("Dummy3", 0)
+                        obj.put("BuzzerOff", 0)
+
+                        apiCaller.setDataGroup(ApiCaller.SET_GROUP_3_C, obj.toString())
                     }
-                    val obj = JSONObject()
-                    obj.put("CycleStart", 0)
-                    obj.put("Homing", 0)
-                    obj.put("Dummy1", 0)
-                    obj.put("Dummy2", status)
-                    obj.put("Dummy3", 0)
-                    obj.put("BuzzerOff", 0)
+                    alertDialog.setCancelClickListener {
+                        update = false
+                        buttonView.isChecked = !isChecked
+                        it.dismissWithAnimation()
+                        update = true
+                    }
+                    alertDialog.show()
 
-                    apiCaller.setDataGroup(ApiCaller.SET_GROUP_3_C, obj.toString())
                 }
             }
 
@@ -167,22 +221,37 @@ class Group_3_C_Fragment : Fragment() {
                     if (!update){
                         return@setOnCheckedChangeListener
                     }
-                    checkBtn = buttonView
+                    val alertDialog = SweetAlertDialog(context, SweetAlertDialog.NORMAL_TYPE)
+                    alertDialog.titleText = "Factory Reset"
+                    alertDialog.contentText = "Do you want to update configuration?"
+                    alertDialog.confirmText = "Yes"
+                    alertDialog.cancelText = "No"
+                    alertDialog.setConfirmClickListener {
+                        alertDialog.dismissWithAnimation()
+                        checkBtn = buttonView
 
-                    val status = if (isChecked) {
-                        1
-                    } else {
-                        0
+                        val status = if (isChecked) {
+                            1
+                        } else {
+                            0
+                        }
+                        val obj = JSONObject()
+                        obj.put("CycleStart", 0)
+                        obj.put("Homing", 0)
+                        obj.put("Reset", 0)
+                        obj.put("FactoryReset", status)
+                        obj.put("Dummy3", 0)
+                        obj.put("BuzzerOff", 0)
+
+                        apiCaller.setDataGroup(ApiCaller.SET_GROUP_3_C, obj.toString())
                     }
-                    val obj = JSONObject()
-                    obj.put("CycleStart", 0)
-                    obj.put("Homing", 0)
-                    obj.put("Dummy1", 0)
-                    obj.put("Dummy2", status)
-                    obj.put("Dummy3", 0)
-                    obj.put("BuzzerOff", 0)
-
-                    apiCaller.setDataGroup(ApiCaller.SET_GROUP_3_C, obj.toString())
+                    alertDialog.setCancelClickListener {
+                        update = false
+                        buttonView.isChecked = !isChecked
+                        it.dismissWithAnimation()
+                        update = true
+                    }
+                    alertDialog.show()
                 }
             }
 
@@ -191,22 +260,37 @@ class Group_3_C_Fragment : Fragment() {
                     if (!update){
                         return@setOnCheckedChangeListener
                     }
-                    checkBtn = buttonView
+                    val alertDialog = SweetAlertDialog(context, SweetAlertDialog.NORMAL_TYPE)
+                    alertDialog.titleText = "Dummy 3"
+                    alertDialog.contentText = "Do you want to update configuration?"
+                    alertDialog.confirmText = "Yes"
+                    alertDialog.cancelText = "No"
+                    alertDialog.setConfirmClickListener {
+                        alertDialog.dismissWithAnimation()
+                        checkBtn = buttonView
 
-                    val status = if (isChecked) {
-                        1
-                    } else {
-                        0
+                        val status = if (isChecked) {
+                            1
+                        } else {
+                            0
+                        }
+                        val obj = JSONObject()
+                        obj.put("CycleStart", 0)
+                        obj.put("Homing", 0)
+                        obj.put("Reset", 0)
+                        obj.put("FactoryReset", 0)
+                        obj.put("Dummy3", status)
+                        obj.put("BuzzerOff", 0)
+
+                        apiCaller.setDataGroup(ApiCaller.SET_GROUP_3_C, obj.toString())
                     }
-                    val obj = JSONObject()
-                    obj.put("CycleStart", 0)
-                    obj.put("Homing", 0)
-                    obj.put("Dummy1", 0)
-                    obj.put("Dummy2", 0)
-                    obj.put("Dummy3", status)
-                    obj.put("BuzzerOff", 0)
-
-                    apiCaller.setDataGroup(ApiCaller.SET_GROUP_3_C, obj.toString())
+                    alertDialog.setCancelClickListener {
+                        update = false
+                        buttonView.isChecked = !isChecked
+                        it.dismissWithAnimation()
+                        update = true
+                    }
+                    alertDialog.show()
                 }
             }
 
@@ -217,22 +301,37 @@ class Group_3_C_Fragment : Fragment() {
                         return@setOnCheckedChangeListener
                     }
 
-                    checkBtn = buttonView
+                    val alertDialog = SweetAlertDialog(context, SweetAlertDialog.NORMAL_TYPE)
+                    alertDialog.titleText = "Buzzer OFF"
+                    alertDialog.contentText = "Do you want to update configuration?"
+                    alertDialog.confirmText = "Yes"
+                    alertDialog.cancelText = "No"
+                    alertDialog.setConfirmClickListener {
+                        alertDialog.dismissWithAnimation()
+                        checkBtn = buttonView
 
-                    val status = if (isChecked) {
-                        1
-                    } else {
-                        0
+                        val status = if (isChecked) {
+                            1
+                        } else {
+                            0
+                        }
+                        val obj = JSONObject()
+                        obj.put("CycleStart", 0)
+                        obj.put("Homing", 0)
+                        obj.put("Reset", 0)
+                        obj.put("FactoryReset", 0)
+                        obj.put("Dummy3", 0)
+                        obj.put("BuzzerOff", status)
+
+                        apiCaller.setDataGroup(ApiCaller.SET_GROUP_3_C, obj.toString())
                     }
-                    val obj = JSONObject()
-                    obj.put("CycleStart", 0)
-                    obj.put("Homing", 0)
-                    obj.put("Dummy1", 0)
-                    obj.put("Dummy2", 0)
-                    obj.put("Dummy3", 0)
-                    obj.put("BuzzerOff", status)
-
-                    apiCaller.setDataGroup(ApiCaller.SET_GROUP_3_C, obj.toString())
+                    alertDialog.setCancelClickListener {
+                        update = false
+                        buttonView.isChecked = !isChecked
+                        it.dismissWithAnimation()
+                        update = true
+                    }
+                    alertDialog.show()
                 }
             }
 

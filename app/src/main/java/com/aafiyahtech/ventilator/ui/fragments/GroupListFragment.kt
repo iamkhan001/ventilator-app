@@ -20,6 +20,7 @@ import com.aafiyahtech.ventilator.customViews.myDialog.SweetAlertDialog
 import com.aafiyahtech.ventilator.models.*
 import com.aafiyahtech.ventilator.ui.adapters.StatusAdapter
 import com.aafiyahtech.ventilator.utils.AppDataProvider
+import com.aafiyahtech.ventilator.utils.NumberUtils
 import kotlinx.android.synthetic.main.fragment_1_a.imgBack
 import kotlinx.android.synthetic.main.fragment_status.*
 import org.greenrobot.eventbus.EventBus
@@ -294,14 +295,14 @@ class GroupListFragment : Fragment() {
             VentilatorStatus(getString(R.string.respiratory_rate), "${item.respiratoryRate}", getString(R.string.unit_respiratory_rate))
         )
         list.add(
-            VentilatorStatus(getString(R.string.inspirator_time), "${item.inspiratorTime}", getString(R.string.unit_inspirator_time))
+            VentilatorStatus(getString(R.string.inspirator_time), "${NumberUtils.toSeconds(item.inspiratorTime)}", getString(R.string.unit_inspirator_time))
         )
         list.add(
-            VentilatorStatus(getString(R.string.inspiratory_end_delay), "${item.inspiratoryEndDelay}", getString(R.string.unit_inspiratory_end_delay))
+            VentilatorStatus(getString(R.string.inspiratory_end_delay), "${NumberUtils.toSeconds(item.inspiratoryEndDelay)}", getString(R.string.unit_inspiratory_end_delay))
         )
 
         list.add(
-            VentilatorStatus(getString(R.string.trigger_time), "${item.triggerTime}", getString(R.string.unit_trigger_time))
+            VentilatorStatus(getString(R.string.trigger_time), "${NumberUtils.toSeconds(item.triggerTime)}", getString(R.string.unit_trigger_time))
         )
         list.add(
             VentilatorStatus(getString(R.string.trigger_pressure), "${item.triggerPressure}", getString(R.string.unit_trigger_pressure))
@@ -365,7 +366,7 @@ class GroupListFragment : Fragment() {
             VentilatorStatus(getString(R.string.minute_ventilation), "${item.minuteVentilation}", getString(R.string.unit_minute_ventilation))
         )
         list.add(
-            VentilatorStatus(getString(R.string.expiratory_end_delay), "${item.expiratoryEndDelay}", getString(R.string.unit_expiratory_end_delay))
+            VentilatorStatus(getString(R.string.expiratory_end_delay), "${NumberUtils.toSeconds(item.expiratoryEndDelay)}", getString(R.string.unit_expiratory_end_delay))
         )
 
         adapter.notifyDataSetChanged()
@@ -383,10 +384,10 @@ class GroupListFragment : Fragment() {
             VentilatorStatus(getString(R.string.graph_type), "${item.graphType}", getString(R.string.unit_graph_type))
         )
         list.add(
-            VentilatorStatus(getString(R.string.app_polling_rate), "${item.appPoleRate}", getString(R.string.unit_app_polling_rate))
+            VentilatorStatus(getString(R.string.app_polling_rate), "${NumberUtils.toSeconds(item.appPoleRate)}", getString(R.string.unit_app_polling_rate))
         )
         list.add(
-            VentilatorStatus(getString(R.string.graph_polling_rate), "${item.graphPolRate}", getString(R.string.unit_graph_polling_rate))
+            VentilatorStatus(getString(R.string.graph_polling_rate), "${NumberUtils.toSeconds(item.graphPolRate )}", getString(R.string.unit_graph_polling_rate))
         )
 
         adapter.notifyDataSetChanged()
@@ -408,10 +409,10 @@ class GroupListFragment : Fragment() {
             VentilatorStatus(getString(R.string.acceleration), "${item.acceleration}", getString(R.string.unit_acceleration))
         )
         list.add(
-            VentilatorStatus(getString(R.string.inspiratory_on_delay), "${item.inspiratoryONDelay}", getString(R.string.unit_inspiratory_on_delay))
+            VentilatorStatus(getString(R.string.inspiratory_on_delay), "${NumberUtils.toSeconds(item.inspiratoryONDelay)}", getString(R.string.unit_inspiratory_on_delay))
         )
         list.add(
-            VentilatorStatus(getString(R.string.t_pause), "${item.tPause}", getString(R.string.unit_t_pause))
+            VentilatorStatus(getString(R.string.t_pause), "${NumberUtils.toSeconds(item.tPause)}", getString(R.string.unit_t_pause))
         )
         list.add(
             VentilatorStatus(getString(R.string.dummy1), "${item.dummy1}", getString(R.string.dummy1))
@@ -444,13 +445,13 @@ class GroupListFragment : Fragment() {
             VentilatorStatus(getString(R.string.expiratory_flow_sensor), "${item.expFlow}", getString(R.string.unit_expiratory_flow_sensor))
         )
         list.add(
-            VentilatorStatus(getString(R.string.actual_inspiratory_time), "${item.actInsTime}", getString(R.string.unit_actual_inspiratory_time))
+            VentilatorStatus(getString(R.string.actual_inspiratory_time), "${NumberUtils.toSeconds(item.actInsTime)}", getString(R.string.unit_actual_inspiratory_time))
         )
         list.add(
-            VentilatorStatus(getString(R.string.actual_expiratory_time), "${item.actExpTime}", getString(R.string.unit_actual_expiratory_time))
+            VentilatorStatus(getString(R.string.actual_expiratory_time), "${NumberUtils.toSeconds(item.actExpTime)}", getString(R.string.unit_actual_expiratory_time))
         )
         list.add(
-            VentilatorStatus(getString(R.string.actual_breath_time), "${item.actBreathTime}", getString(R.string.unit_actual_breath_time))
+            VentilatorStatus(getString(R.string.actual_breath_time), "${NumberUtils.toSeconds(item.actBreathTime)}", getString(R.string.unit_actual_breath_time))
         )
         adapter.notifyDataSetChanged()
 
@@ -469,7 +470,7 @@ class GroupListFragment : Fragment() {
             VentilatorStatus(getString(R.string.expiration_velocity), "${item.expVel}", getString(R.string.unit_expiration_velocity))
         )
         list.add(
-            VentilatorStatus(getString(R.string.breath_time), "${item.breathTime}", getString(R.string.unit_breath_time))
+            VentilatorStatus(getString(R.string.breath_time), "${NumberUtils.toSeconds(item.breathTime)}", getString(R.string.unit_breath_time))
         )
 
         adapter.notifyDataSetChanged()

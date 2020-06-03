@@ -17,6 +17,7 @@ import com.aafiyahtech.ventilator.models.Group_3_A
 import com.aafiyahtech.ventilator.models.MessageEvent
 import com.aafiyahtech.ventilator.ui.viewModels.MainViewModel
 import com.aafiyahtech.ventilator.utils.ApiCaller
+import com.aafiyahtech.ventilator.utils.NumberUtils
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_3_a.*
 import org.greenrobot.eventbus.EventBus
@@ -132,8 +133,8 @@ class Group_3_A_Fragment : Fragment() {
 
     private fun setDetails(group: Group_3_A) {
         etGraphType.setText("${group.graphType}")
-        etAppPollRate.setText("${group.appPoleRate}")
-        etGraphPollRate.setText("${group.graphPolRate}")
+        etAppPollRate.setText("${NumberUtils.toSeconds(group.appPoleRate)}")
+        etGraphPollRate.setText("${NumberUtils.toSeconds(group.graphPolRate)}")
     }
 
     private fun validateAndUpdate() {
@@ -153,8 +154,8 @@ class Group_3_A_Fragment : Fragment() {
         mfGraphType.error = ""
         mfGraphType.isErrorEnabled = false
 
-        val appPoll = try {
-            etAppPollRate.text.toString().toIntOrNull()
+        var appPoll = try {
+            etAppPollRate.text.toString().toFloatOrNull()
         } catch (e: Exception) {
             e.printStackTrace()
             null
@@ -168,8 +169,8 @@ class Group_3_A_Fragment : Fragment() {
         mfAppPollRate.error = ""
         mfAppPollRate.isErrorEnabled = false
 
-        val graphPoll = try {
-            etGraphPollRate.text.toString().toIntOrNull()
+        var graphPoll = try {
+            etGraphPollRate.text.toString().toFloatOrNull()
         } catch (e: Exception) {
             e.printStackTrace()
             null
@@ -183,11 +184,13 @@ class Group_3_A_Fragment : Fragment() {
         mfGraphPollRate.error = ""
         mfGraphType.isErrorEnabled = false
 
+        appPoll *= 1000
+        graphPoll *= 1000
 
         val group = Group_3_A(
             graphType = graphType,
-            appPoleRate = appPoll,
-            graphPolRate = graphPoll
+            appPoleRate = appPoll.toInt(),
+            graphPolRate = graphPoll.toInt()
         )
 
         alertDialog = SweetAlertDialog(requireContext(), SweetAlertDialog.PROGRESS_TYPE)

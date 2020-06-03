@@ -17,6 +17,7 @@ import com.aafiyahtech.ventilator.models.Group_3_B
 import com.aafiyahtech.ventilator.models.MessageEvent
 import com.aafiyahtech.ventilator.ui.viewModels.MainViewModel
 import com.aafiyahtech.ventilator.utils.ApiCaller
+import com.aafiyahtech.ventilator.utils.NumberUtils
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_3_b.*
 import org.greenrobot.eventbus.EventBus
@@ -105,7 +106,7 @@ class Group_3_B_Fragment : Fragment() {
         tvRngPlatePressure.text = "Range $minPlatePressure to $maxPlatePressure"
         tvRngAcceleration.text = "Range $minAcceleration to $maxAcceleration"
         tvRngInsOnDelay.text = "Range $minInsONDelay to $maxInsONDelay"
-        tvDefTPause.text = "Range $minTPause to $maxTPause"
+        tvRngTPause.text = "Range $minTPause to $maxTPause"
 
         tvDefPlatePressure.text = "Default $defPlatePressure"
         tvDefAcceleration.text = "Default $defAcceleration"
@@ -141,8 +142,8 @@ class Group_3_B_Fragment : Fragment() {
     private fun setDetails(group: Group_3_B) {
         etPlatePressure.setText("${group.platePressure}")
         etAcceleration.setText("${group.acceleration}")
-        etInsOnDelay.setText("${group.inspiratoryONDelay}")
-        etTPause.setText("${group.tPause}")
+        etInsOnDelay.setText("${NumberUtils.toSeconds(group.inspiratoryONDelay)}")
+        etTPause.setText("${NumberUtils.toSeconds(group.tPause)}")
         etDummy1.setText("${group.dummy1}")
     }
 
@@ -163,8 +164,8 @@ class Group_3_B_Fragment : Fragment() {
         mfPlatePressure.error = ""
         mfPlatePressure.isErrorEnabled = false
 
-        val insON = try {
-            etInsOnDelay.text.toString().toIntOrNull()
+        var insON = try {
+            etInsOnDelay.text.toString().toFloatOrNull()
         } catch (e: Exception) {
             e.printStackTrace()
             null
@@ -193,8 +194,8 @@ class Group_3_B_Fragment : Fragment() {
         mfAcceleration.error = ""
         mfAcceleration.isErrorEnabled = false
 
-        val tPause = try {
-            etTPause.text.toString().toIntOrNull()
+        var tPause = try {
+            etTPause.text.toString().toFloatOrNull()
         } catch (e: Exception) {
             e.printStackTrace()
             null
@@ -221,12 +222,14 @@ class Group_3_B_Fragment : Fragment() {
         }
         mfDummy1.error = ""
 
+        insON *= 1000
+        tPause *= 1000
 
         val group = Group_3_B(
             platePressure = platePress,
             acceleration = acceleration,
             inspiratoryONDelay = insON,
-            tPause = tPause,
+            tPause = tPause.toInt(),
             dummy1 = dummy1
         )
 
